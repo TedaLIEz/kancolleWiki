@@ -11,7 +11,7 @@ import java.util.List;
  * 舰娘
  *
  */
-public final class Ship extends ShipClass{
+public final class Ship extends ShipClass implements Comparable<Ship>{
 
     private int id;
     //对应XX型id
@@ -114,7 +114,16 @@ public final class Ship extends ShipClass{
         isAbstract = false;
     }
 
-
+    @Override
+    public int compareTo(Ship another) {
+        if (abstractShipClass.getId() - another.abstractShipClass.getId() < 0) {
+            return -1;
+        } else if(abstractShipClass.getId() == another.abstractShipClass.getId()){
+            return id - another.getId();
+        } else {
+            return 1;
+        }
+    }
 
 
     public static class Builder {

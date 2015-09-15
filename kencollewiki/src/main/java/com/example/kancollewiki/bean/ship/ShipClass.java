@@ -25,12 +25,8 @@ public abstract class ShipClass implements Comparator<ShipClass>{
     public int compare(ShipClass lhs, ShipClass rhs) {
         return lhs.getId() - rhs.getId();
     }
-
-    @ShipNodeId
     private int id;
-    @ShipNodeLabel
     private String name;
-    @ShipNodePid
     private int pid;
     protected boolean isAbstract = true;
 

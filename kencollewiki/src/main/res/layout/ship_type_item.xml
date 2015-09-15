@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:stateListAnimator="@drawable/item_state_animator"
+        android:id="@+id/ship_item"
+        android:clickable="true"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="60dp">
+        <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ship_type"
+            android:text="战舰"
+            android:textSize="20sp"
+            android:gravity="center_vertical" />
+        <View
+
+
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <ImageView
+            android:layout_gravity="center_vertical"
+            android:layout_margin="8dp"
+            android:background="@android:drawable/ic_menu_call"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</LinearLayout>
