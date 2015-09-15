@@ -1,26 +1,84 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F7F4F0"
     tools:context=".MainActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
-    <android.support.v4.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <FrameLayout
-            android:id="@+id/content_frame"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"/>
-        <ListView
-            android:id="@+id/left_drawer"
-            android:layout_width="180dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="left"
-            android:background="#FFF"
-            android:choiceMode="singleChoice"/>
-    </android.support.v4.widget.DrawerLayout>
+        <com.zzt.inbox.widget.InboxBackgroundScrollView
+            android:overScrollMode="always"
+            android:scrollbars="none"
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-</FrameLayout>
+                <LinearLayout
+                    android:id="@+id/dd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginRight="16dp"
+                        android:text="驱逐舰"
+                        android:layout_gravity="center_vertical"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/bb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginRight="16dp"
+                        android:text="战舰"
+                        android:layout_gravity="center_vertical"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+        </com.zzt.inbox.widget.InboxBackgroundScrollView>
+
+        <com.zzt.inbox.widget.InboxLayoutListView
+            android:id="@+id/inboxlayout"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.zzt.inbox.widget.InboxLayoutListView>
+
+    </FrameLayout>
+
+    <ListView
+        android:id="@+id/left_list"
+        android:layout_width="180dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:background="#FFF"
+        android:choiceMode="singleChoice"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        >
+
+    </ListView>
+
+
+</android.support.v4.widget.DrawerLayout>
