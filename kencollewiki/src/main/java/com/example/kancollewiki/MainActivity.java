@@ -1,6 +1,5 @@
 package com.example.kancollewiki;
 
-import android.app.Activity;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -16,17 +15,18 @@ import com.zzt.inbox.widget.InboxLayoutBase;
 import com.zzt.inbox.widget.InboxLayoutListView;
 import com.zzt.inbox.widget.InboxBackgroundScrollView;
 
-import com.example.kancollewiki.R;
+import com.example.kancollewiki.activities.BaseActivity;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     InboxLayoutListView inboxLayoutListView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(0xdd000000));
+
+//        getActionBar().setBackgroundDrawable(new ColorDrawable(0xdd000000));
 
         final InboxBackgroundScrollView inboxBackgroundScrollView = (InboxBackgroundScrollView)findViewById(R.id.scroll);
         inboxLayoutListView = (InboxLayoutListView)findViewById(R.id.inboxlayout);

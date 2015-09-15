@@ -1,8 +1,5 @@
 package com.example.kancollewiki.bean.ship;
 
-import com.example.kancollewiki.annotation.ShipNodeId;
-import com.example.kancollewiki.annotation.ShipNodeLabel;
-import com.example.kancollewiki.annotation.ShipNodePid;
 
 import java.util.Comparator;
 
@@ -25,12 +22,8 @@ public abstract class ShipClass implements Comparator<ShipClass>{
     public int compare(ShipClass lhs, ShipClass rhs) {
         return lhs.getId() - rhs.getId();
     }
-
-    @ShipNodeId
     private int id;
-    @ShipNodeLabel
     private String name;
-    @ShipNodePid
     private int pid;
     protected boolean isAbstract = true;
 
