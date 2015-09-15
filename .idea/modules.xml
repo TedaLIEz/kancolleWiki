@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/KancolleWiki.iml" filepath="$PROJECT_DIR$/KancolleWiki.iml" />
+      <module fileurl="file://$PROJECT_DIR$/InboxLayoutLib/InboxLayoutLib.iml" filepath="$PROJECT_DIR$/InboxLayoutLib/InboxLayoutLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kancollewiki.iml" filepath="$PROJECT_DIR$/kancollewiki.iml" />
       <module fileurl="file://$PROJECT_DIR$/kencollewiki/kencollewiki.iml" filepath="$PROJECT_DIR$/kencollewiki/kencollewiki.iml" />
     </modules>
   </component>
