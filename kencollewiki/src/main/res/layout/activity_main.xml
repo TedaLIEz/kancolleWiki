@@ -7,25 +7,16 @@
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary">
-        </Toolbar>
-    </LinearLayout>
-    <android.support.design.widget.NavigationView
 
+    <android.support.design.widget.NavigationView
         app:menu="@menu/menu_main"
         android:layout_gravity="start"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/navigation"
-        />
+        android:id="@+id/navigation" />
+
+
+    <include layout="@layout/default_toolbar"/>
 
 
 </android.support.v4.widget.DrawerLayout>

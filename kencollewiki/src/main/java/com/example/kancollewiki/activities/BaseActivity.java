@@ -10,7 +10,7 @@ import android.view.MenuItem;
 
 import com.example.kancollewiki.R;
 
-public class BaseActivity extends Activity {
+public class BaseActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
@@ -26,4 +26,6 @@ public class BaseActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
+
+
 }
