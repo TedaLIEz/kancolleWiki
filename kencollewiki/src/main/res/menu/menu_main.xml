@@ -1,4 +1,34 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="首页"/>
+        <item
+            android:id="@+id/level"
+            android:icon="@drawable/ic_flag_black_24dp"
+            android:title="出击"/>
+        <item
+            android:id="@+id/ship"
+            android:icon="@drawable/ic_directions_boat_black_24dp"
+            android:title="舰娘"/>
+        <item
+            android:id="@+id/equipment"
+            android:icon="@drawable/ic_local_dining_black_24dp"
+            android:title="装备"/>
+        <item
+            android:id="@+id/task"
+            android:icon="@drawable/ic_list_black_24dp"
+            android:title="任务"/>
+        <item
+            android:id="@+id/crusade"
+            android:icon="@drawable/ic_local_pizza_black_24dp"
+            android:title="远征"/>
+
+    </group>
 </menu>
