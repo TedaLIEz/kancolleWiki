@@ -12,12 +12,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.example.kancollewiki.MainActivity;
+import com.example.kancollewiki.R;
 import com.zzt.inbox.interfaces.OnDragStateChangeListener;
 import com.zzt.inbox.widget.InboxLayoutBase;
 import com.zzt.inbox.widget.InboxLayoutListView;
 import com.zzt.inbox.widget.InboxBackgroundScrollView;
 
-import com.example.kancollewiki.R;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,7 +26,6 @@ import com.example.kancollewiki.R;
  * to handle interaction events.
  */
 public class ShipFragment extends Fragment {
-    ListView listView;
     private OnFragmentInteractionListener mListener;
     InboxLayoutListView inboxLayoutListView;
 
@@ -40,11 +39,10 @@ public class ShipFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_ship, container, false);
-        listView = (ListView) rootView.findViewById(R.id.listView);
 
         final InboxBackgroundScrollView inboxBackgroundScrollView =
-                (InboxBackgroundScrollView)listView.findViewById(R.id.scroll);
-        inboxLayoutListView = (InboxLayoutListView)listView.findViewById(R.id.inboxlayout);
+                (InboxBackgroundScrollView)rootView.findViewById(R.id.scroll);
+        inboxLayoutListView = (InboxLayoutListView)rootView.findViewById(R.id.inboxlayout);
         inboxLayoutListView.setBackgroundScrollView(inboxBackgroundScrollView);
         inboxLayoutListView.setCloseDistance(50);
         inboxLayoutListView.setOnDragStateChangeListener(new OnDragStateChangeListener() {
@@ -82,11 +80,8 @@ public class ShipFragment extends Fragment {
                 return view;
             }
         });
-        return rootView;
-    }
 
-    private void init() {
-        final LinearLayout dd = (LinearLayout)listView.findViewById(R.id.dd);
+        final LinearLayout dd = (LinearLayout)rootView.findViewById(R.id.dd);
         dd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,14 +89,18 @@ public class ShipFragment extends Fragment {
             }
         });
 
-        final LinearLayout bb = (LinearLayout)listView.findViewById(R.id.bb);
+        final LinearLayout bb = (LinearLayout)rootView.findViewById(R.id.bb);
         bb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 inboxLayoutListView.openWithAnim(bb);
             }
         });
+
+        return rootView;
     }
+
+
 
 
 

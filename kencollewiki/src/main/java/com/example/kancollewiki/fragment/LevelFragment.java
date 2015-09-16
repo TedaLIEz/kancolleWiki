@@ -8,29 +8,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
+import com.example.kancollewiki.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link BaseFragment.OnFragmentInteractionListener} interface
+ * {@link LevelFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
+ * Use the {@link LevelFragment#newInstance} factory method to
+ * create an instance of this fragment.
  */
-public class BaseFragment extends Fragment {
-
+public class LevelFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
-    public BaseFragment() {
+    public LevelFragment() {
         // Required empty public constructor
     }
 
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_level, container, false);
     }
+
 
     @Override
     public void onAttach(Activity activity) {
