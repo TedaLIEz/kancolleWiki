@@ -3,9 +3,59 @@
     android:layout_height="match_parent"
     tools:context="com.example.kancollewiki.fragment.ShipFragment">
 
-    <ListView
-        android:id="@+id/listView"
+    <com.zzt.inbox.widget.InboxBackgroundScrollView
+        android:overScrollMode="always"
+        android:scrollbars="none"
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/dd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="驱逐舰"
+                    android:layout_gravity="center_vertical"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginRight="16dp"
+                    android:text="战舰"
+                    android:layout_gravity="center_vertical"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+    </com.zzt.inbox.widget.InboxBackgroundScrollView>
+
+    <com.zzt.inbox.widget.InboxLayoutListView
+        android:id="@+id/inboxlayout"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.zzt.inbox.widget.InboxLayoutListView>
 
 </FrameLayout>
