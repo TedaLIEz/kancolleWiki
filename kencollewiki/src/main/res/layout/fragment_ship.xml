@@ -9,45 +9,12 @@
         android:id="@+id/scroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
+        <com.example.kancollewiki.view.MyListLinearLayout
+            android:id="@+id/shipclass_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-
-            <LinearLayout
-                android:id="@+id/dd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginRight="16dp"
-                    android:text="驱逐舰"
-                    android:layout_gravity="center_vertical"
-                    />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/bb"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginRight="16dp"
-                    android:text="战舰"
-                    android:layout_gravity="center_vertical"
-                    />
-            </LinearLayout>
-        </LinearLayout>
+        </com.example.kancollewiki.view.MyListLinearLayout>
 
     </com.zzt.inbox.widget.InboxBackgroundScrollView>
 

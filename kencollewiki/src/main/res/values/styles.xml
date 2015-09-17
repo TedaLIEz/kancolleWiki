@@ -1,13 +1,20 @@
 <resources>
 
     <!-- Base application theme. -->
+    <style name="AppTheme" parent="@android:style/Theme.Material.NoActionBar">
+
+    </style>
     <style name="MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:colorPrimary">#EF5350</item>
-        <item name="android:colorPrimaryDark">#E53935</item>
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:actionMenuTextAppearance">@style/MyMenuStyle</item>
     </style>
     <style name="MyActionBarStyle" parent="@android:style/Theme.Material.Light">
 
+    </style>
+    <style name="MyMenuStyle">
+        <item name="android:textSize">@dimen/abc_text_size_medium_material</item>
     </style>
 </resources>

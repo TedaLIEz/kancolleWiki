@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="@dimen/nav_header_width"
+    android:padding="@dimen/nav_margin"
+    android:id="@+id/nav_header"
     android:background="@android:color/holo_blue_light"
-    android:padding="16dp"
-    android:orientation="vertical"
+    android:elevation="@dimen/navigation_elevation"
+    android:orientation="horizontal"
     android:gravity="bottom">
+    <LinearLayout
+        android:paddingTop="@dimen/nav_margin"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/avator"
+            android:src="@drawable/avator2"
+            android:layout_width="@dimen/nav_avator_width"
+            android:layout_height="wrap_content"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            app:border_width="0.1dp"
+            app:border_color="#00000000" />
+    </LinearLayout>
 
     <TextView
+        android:gravity="right"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="@dimen/abc_text_size_title_material_toolbar"
         android:text="KancolleWiki"/>
 </LinearLayout>

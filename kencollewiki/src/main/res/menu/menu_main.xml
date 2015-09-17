@@ -8,6 +8,7 @@
         <item
             android:id="@+id/home"
             android:icon="@drawable/ic_home_black_24dp"
+
             android:title="首页"/>
         <item
             android:id="@+id/level"
@@ -15,6 +16,7 @@
             android:title="出击"/>
         <item
             android:id="@+id/ship"
+
             android:icon="@drawable/ic_directions_boat_black_24dp"
             android:title="舰娘"/>
         <item

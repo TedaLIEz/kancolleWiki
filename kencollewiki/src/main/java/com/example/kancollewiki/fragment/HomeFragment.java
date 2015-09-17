@@ -13,14 +13,13 @@ import com.example.kancollewiki.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link LevelFragment.OnFragmentInteractionListener} interface
+ * {@link HomeFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link LevelFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
-public class LevelFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment {
 
-    public LevelFragment() {
+
+    public HomeFragment() {
         // Required empty public constructor
     }
 
@@ -29,8 +28,7 @@ public class LevelFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_level, container, false);
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
-
 
 }

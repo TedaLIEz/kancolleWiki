@@ -3,9 +3,6 @@ package com.example.kancollewiki.adapter;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.kancollewiki.R;
@@ -28,7 +25,7 @@ public class ShipTypeAdapter<T> extends BaseListAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.ship_type_item,parent,false);
+            convertView = inflater.inflate(R.layout.item_ship,parent,false);
         }
         TextView ship = ViewHolder.findViewById(convertView,R.id.ship_type);
         ship.setText((String) datas.get(position));

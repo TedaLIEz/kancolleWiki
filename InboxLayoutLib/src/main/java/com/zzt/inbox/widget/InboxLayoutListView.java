@@ -25,7 +25,6 @@ public class InboxLayoutListView extends InboxLayoutBase <ListView>{
     public InboxLayoutListView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
-
     @Override
     protected ListView createDragableView(Context context, AttributeSet attrs) {
         dragableView = new ListView(context);
@@ -37,6 +36,10 @@ public class InboxLayoutListView extends InboxLayoutBase <ListView>{
         dragableView.setAdapter(adapter);
     }
 
+    public boolean hasAdapter() {
+        Adapter adapter = dragableView.getAdapter();
+        return !(adapter == null || adapter.isEmpty());
+    }
     protected boolean isReadyForDragStart(){
         final Adapter adapter = dragableView.getAdapter();
         if(null == adapter || adapter.isEmpty()){

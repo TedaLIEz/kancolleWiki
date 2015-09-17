@@ -1,8 +1,9 @@
 package com.example.kancollewiki.activities;
 
 import android.app.ActionBar;
-import android.app.Activity;
+
 import android.os.PersistableBundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
