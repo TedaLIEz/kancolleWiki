@@ -98,12 +98,12 @@ public abstract class  InboxLayoutBase <T extends View> extends FrameLayout {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-        if(mScrollView.getHeight()!=0 && mScrollView.getHeight()>mScrollView.getChildAt(0).getHeight()){
-            View view = mScrollView.getChildAt(0).findViewWithTag("empty_view");
+        if(mListView.getHeight()!=0 && mListView.getHeight()>mListView.getChildAt(0).getHeight()){
+            View view = mListView.getChildAt(0).findViewWithTag("empty_view");
             if(view == null)
                 return ;
             ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-            layoutParams.height = mScrollView.getHeight() - mScrollView.getChildAt(0).getHeight();
+            layoutParams.height = mListView.getHeight() - mListView.getChildAt(0).getHeight();
             view.setLayoutParams(layoutParams);
             view.requestLayout();
         }
@@ -275,7 +275,7 @@ public abstract class  InboxLayoutBase <T extends View> extends FrameLayout {
         scrollTo(0, realOffsetY);
         dy = prevOffSetY - realOffsetY;
         prevOffSetY = realOffsetY;
-        mScrollView.scrollBy(0, -dy);
+        mListView.scrollBy(0, -dy);
 
         if(realOffsetY<-closeDistance||realOffsetY>closeDistance&&onDragStateChangeListener!=null){
             onDragStateChangeListener.dragStateChange(DragState.CANCLOSE);
@@ -289,15 +289,15 @@ public abstract class  InboxLayoutBase <T extends View> extends FrameLayout {
         * */
         switch(mCurrentMode){
             case PULL_FROM_END:
-                mScrollView.drawBottomShadow(mScrollView.getScrollY()+mScrollView.getHeight()-realOffsetY,
-                        mScrollView.getScrollY()+mScrollView.getHeight(), 60);
+                mListView.drawBottomShadow(mListView.getScrollY()+mListView.getHeight()-realOffsetY,
+                        mListView.getScrollY()+mListView.getHeight(), 60);
                 break;
             case PULL_FROM_START:
             default:
-                mScrollView.drawTopShadow(mScrollView.getScrollY(), -realOffsetY, 60);
+                mListView.drawTopShadow(mListView.getScrollY(), -realOffsetY, 60);
                 break;
         }
-        mScrollView.invalidate();
+        mListView.invalidate();
         return realOffsetY;
     }
 
@@ -340,7 +340,7 @@ public abstract class  InboxLayoutBase <T extends View> extends FrameLayout {
                 PrevY = mCurrentY;
                 scrollTo(0, mCurrentY);
                 if(shouldRollback) {
-                    mScrollView.scrollBy(0, -offsetY);
+                    mListView.scrollBy(0, -offsetY);
                 }
             }
             // keep going...
@@ -381,8 +381,8 @@ public abstract class  InboxLayoutBase <T extends View> extends FrameLayout {
         }
     }
 
-    public void setBackgroundScrollView(InboxBackgroundScrollView scrollView){
-        mScrollView = scrollView;
+    public void setBackgroundScrollView(InboxBackgroundScrollView listView){
+        mListView = listView;
     }
 
     public void setOnDragStateChangeListener(OnDragStateChangeListener listener){
@@ -395,7 +395,7 @@ public abstract class  InboxLayoutBase <T extends View> extends FrameLayout {
 
     private int mHeight = 0;
     private int iScrollY;
-    private InboxBackgroundScrollView mScrollView;
+    private InboxBackgroundScrollView mListView;
     private ViewGroup.LayoutParams layoutParams;
     private LinearLayout.LayoutParams linearLayoutParams;
     private RelativeLayout.LayoutParams relativeLayoutParams;
@@ -419,7 +419,7 @@ public abstract class  InboxLayoutBase <T extends View> extends FrameLayout {
         /*
          *  eat the touch event when anim start
          */
-        mScrollView.setTouchable(false);
+        mListView.setTouchable(false);
 
         layoutParams = topView.getLayoutParams();
         if(layoutParams instanceof LinearLayout.LayoutParams){
@@ -436,7 +436,7 @@ public abstract class  InboxLayoutBase <T extends View> extends FrameLayout {
         }
 
         IsStartAnim = true;
-        mScrollView.needToDrawShadow = true;
+        mListView.needToDrawShadow = true;
         beginBottomMargin = heightRange;
         topView.setAlpha(0);
 
@@ -444,21 +444,21 @@ public abstract class  InboxLayoutBase <T extends View> extends FrameLayout {
             animatorSet.cancel();
         }
 
-        int scrollViewHeight = mScrollView.getHeight();
+        int scrollViewHeight = mListView.getHeight();
         endScrollY = topView.getTop();
-        beginScrollY = mScrollView.getScrollY();
+        beginScrollY = mListView.getScrollY();
         heightRange = scrollViewHeight - topView.getHeight();
         mHeightAnimator.setIntValues(beginBottomMargin, heightRange);
         mScrollYAnimator.setIntValues(beginScrollY, endScrollY);
-        mScrollView.drawTopShadow(beginScrollY, endScrollY - beginScrollY, 0);
-        mScrollView.drawBottomShadow(topView.getBottom(), beginScrollY + scrollViewHeight, 0);
+        mListView.drawTopShadow(beginScrollY, endScrollY - beginScrollY, 0);
+        mListView.drawBottomShadow(topView.getBottom(), beginScrollY + scrollViewHeight, 0);
         animatorSet.start();
         postDelayed(showRunnable, ANIMDURA+10);//将顶层的view显示出来
     }
 
     public void closeWithAnim(){
         topView.setAlpha(1);
-        mScrollView.needToDrawSmallShadow = false;
+        mListView.needToDrawSmallShadow = false;
         IsStartAnim = false;
         dragState = DragState.CANNOTCLOSE;
         if(onDragStateChangeListener!=null){
@@ -469,7 +469,7 @@ public abstract class  InboxLayoutBase <T extends View> extends FrameLayout {
         }
 
         mHeightAnimator.setIntValues(heightRange, beginBottomMargin);
-        mScrollYAnimator.setIntValues(mScrollView.getScrollY(), beginScrollY);
+        mScrollYAnimator.setIntValues(mListView.getScrollY(), beginScrollY);
         animatorSet.start();
     }
 
@@ -488,10 +488,10 @@ public abstract class  InboxLayoutBase <T extends View> extends FrameLayout {
     private int alpha;
     private void scrollYChangeAnim(){
         alpha = 60 * mHeight/heightRange;
-        mScrollView.scrollTo(0, iScrollY);
-        mScrollView.drawTopShadow(iScrollY, topView.getTop()-iScrollY, alpha);
-        mScrollView.drawBottomShadow(topView.getBottom() + mHeight, mScrollView.getScrollY() + mScrollView.getHeight(), alpha);
-        mScrollView.invalidate();
+        mListView.scrollTo(0, iScrollY);
+        mListView.drawTopShadow(iScrollY, topView.getTop()-iScrollY, alpha);
+        mListView.drawBottomShadow(topView.getBottom() + mHeight, mListView.getScrollY() + mListView.getHeight(), alpha);
+        mListView.invalidate();
     }
 
     Property<InboxLayoutBase, Integer> aHeight = new Property<InboxLayoutBase, Integer>(Integer.class, "mHeight") {
@@ -505,13 +505,13 @@ public abstract class  InboxLayoutBase <T extends View> extends FrameLayout {
             heightChangeAnim();
             if(value == heightRange && IsStartAnim){
                 //Open Anim Stop
-                mScrollView.needToDrawSmallShadow = true;
+                mListView.needToDrawSmallShadow = true;
             }else if(value == beginBottomMargin && !IsStartAnim){
                 //Close Anim Stop
                 /*
                  * enable touch event when top view close
                  */
-                mScrollView.setTouchable(true);
+                mListView.setTouchable(true);
             }
         }
     };
