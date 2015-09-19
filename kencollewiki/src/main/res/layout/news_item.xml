@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/card_margin"
+        android:layout_marginLeft="@dimen/card_margin"
+        android:layout_marginRight="@dimen/card_margin">
+
+        <LinearLayout
+            style="@style/Widget.CardContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <TextView
+                android:textAppearance="@style/AppTheme.MyTextAppearance"
+                android:id="@+id/news_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="艦これ」オリジナルサウンドトラック OST vol.2【風】の一般販売が今月末より開始されてます。本日から同予約もスタート致します。あわせて、OST vol.1、艦娘想歌 vol.1、vol.2の再販も決定致しました！「艦これ」楽曲も、どうぞよろしくお願い致します！
+#艦これ
+
+“舰队收藏”OriginalSoundTrack OST vol.2【风】的一般发售将在本月末开始。今日开始预约，另外OST vol.1、、舰娘想歌 vol.1、vol.2也决定再版了！“舰队收藏”的乐曲也请多多关照！
+#艦これ" />
+
+
+                <TextView
+                    android:layout_gravity="end"
+                    android:text="8:58 09-18"
+                    android:id="@+id/news_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
