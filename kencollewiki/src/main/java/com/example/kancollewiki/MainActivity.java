@@ -1,32 +1,16 @@
 package com.example.kancollewiki;
 
-import android.animation.StateListAnimator;
+import android.app.Fragment;
 import android.app.FragmentManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.AnimationDrawable;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
 
 import com.example.kancollewiki.fragment.CrusadeFragment;
 import com.example.kancollewiki.fragment.EquipFragment;
@@ -34,15 +18,9 @@ import com.example.kancollewiki.fragment.HomeFragment;
 import com.example.kancollewiki.fragment.LevelFragment;
 import com.example.kancollewiki.fragment.ShipFragment;
 import com.example.kancollewiki.fragment.TaskFragment;
-import com.example.kancollewiki.util.Utils;
-import com.zzt.inbox.interfaces.OnDragStateChangeListener;
-import com.zzt.inbox.widget.InboxLayoutBase;
-import com.zzt.inbox.widget.InboxLayoutListView;
-import com.zzt.inbox.widget.InboxBackgroundScrollView;
 
 import com.example.kancollewiki.activities.BaseActivity;
-
-import java.util.logging.Level;
+import com.example.kancollewiki.util.Utils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -55,15 +33,52 @@ public class MainActivity extends BaseActivity {
     NavigationView navigationView;
     @Bind(R.id.toolbar)
     Toolbar toolbar;
+    Fragment homeFragment,shipFragment,levelFragment,taskFragment,crusadeFragment,equipFragment;
+    Fragment currentFragment = null;
     FragmentManager manager = getFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        init();
+        initFragments();
+        initView();
     }
-    private void init() {
+
+    private void initFragments() {
+        if (homeFragment == null) {
+            homeFragment = new HomeFragment();
+        } else {
+            homeFragment = manager.findFragmentByTag(homeFragment.getClass().getSimpleName());
+        }
+        if (levelFragment == null) {
+            levelFragment = new LevelFragment();
+        } else {
+            levelFragment = manager.findFragmentByTag(levelFragment.getClass().getSimpleName());
+        }
+        if (shipFragment == null) {
+            shipFragment = new ShipFragment();
+        } else {
+            shipFragment = manager.findFragmentByTag(shipFragment.getClass().getSimpleName());
+        }
+        if (crusadeFragment == null) {
+            crusadeFragment = new CrusadeFragment();
+        } else {
+            crusadeFragment = manager.findFragmentByTag(crusadeFragment.getClass().getSimpleName());
+        }
+        if (equipFragment == null) {
+            equipFragment = new EquipFragment();
+        } else {
+            equipFragment = manager.findFragmentByTag(equipFragment.getClass().getSimpleName());
+        }
+        if (taskFragment == null) {
+            taskFragment = new TaskFragment();
+        } else {
+            taskFragment = manager.findFragmentByTag(taskFragment.getClass().getSimpleName());
+        }
+    }
+
+    private void initView() {
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,48 +86,67 @@ public class MainActivity extends BaseActivity {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
+        getFragmentManager().beginTransaction().add(R.id.container, homeFragment).commit();
+        currentFragment = homeFragment;
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
+
+
                 switch (menuItem.getItemId()) {
                     case R.id.home:
-                        manager.beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+                        switchFragment(homeFragment);
                         toolbar.setTitle(HomeFragment.class.getSimpleName());
                         break;
+                    case R.id.level:
+                        switchFragment(levelFragment);
+                        break;
                     case R.id.ship:
-                        manager.beginTransaction().replace(R.id.container, new ShipFragment()).commit();
+                        switchFragment(shipFragment);
+
                         toolbar.setTitle(ShipFragment.class.getSimpleName());
                         break;
-                    case R.id.level:
-                        manager.beginTransaction().replace(R.id.container, new LevelFragment()).commit();
-                        toolbar.setTitle(LevelFragment.class.getSimpleName());
-                        break;
                     case R.id.equipment:
-                        manager.beginTransaction().replace(R.id.container, new EquipFragment()).commit();
+                        switchFragment(equipFragment);
                         toolbar.setTitle(EquipFragment.class.getSimpleName());
                         break;
                     case R.id.task:
-                        manager.beginTransaction().replace(R.id.container, new TaskFragment()).commit();
+                        switchFragment(taskFragment);
                         toolbar.setTitle(TaskFragment.class.getSimpleName());
                         break;
                     case R.id.crusade:
-                        manager.beginTransaction().replace(R.id.container, new CrusadeFragment()).commit();
+                        switchFragment(crusadeFragment);
                         toolbar.setTitle(CrusadeFragment.class.getSimpleName());
                         break;
                     default:
                         break;
                 }
+
                 menuItem.setChecked(true);
                 drawerLayout.closeDrawers();
                 return true;
             }
-
         });
     }
+
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+
+    private void switchFragment(Fragment to) {
+        if(currentFragment != to) {
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+            if (!to.isAdded()) {
+                transaction.hide(currentFragment).add(R.id.container, to, to.getClass().getSimpleName()).commit();
+            } else {
+                transaction.hide(currentFragment).show(to).commit();
+            }
+            currentFragment = to;
+        }
     }
 }

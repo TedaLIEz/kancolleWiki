@@ -21,6 +21,9 @@ import com.example.kancollewiki.R;
 import com.example.kancollewiki.bean.News;
 import com.example.kancollewiki.util.Utils;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
+import com.marshalchen.ultimaterecyclerview.UltimateViewAdapter;
+import com.marshalchen.ultimaterecyclerview.animators.SlideInLeftAnimator;
+import com.marshalchen.ultimaterecyclerview.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -37,17 +40,11 @@ public class HomeFragment extends BaseFragment{
     UltimateRecyclerView recyclerView;
     NewsAdapter adapter;
     ArrayList<News> newses;
+    LinearLayoutManager linearLayoutManager;
     public HomeFragment() {
         // Required empty public constructor
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        if (newses.size() > 0) {
-            outState.putSerializable("data",newses);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,15 +56,12 @@ public class HomeFragment extends BaseFragment{
         return rootView;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
 
 
 
     private void initRecyclerView() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+        linearLayoutManager = new LinearLayoutManager(recyclerView.getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
         newses = new ArrayList<>();
         News news1 = new News("「艦これ」オリジナルサウンドトラック OST vol.2【風】の一般販売が今月末より開始されてます。本日から同予約もスタート致します。あわせて、OST vol.1、艦娘想歌 vol.1、vol.2の再販も決定致しました！「艦これ」楽曲も、どうぞよろしくお願い致します！\n" +
                 "#艦これ\n" +
@@ -97,9 +91,8 @@ public class HomeFragment extends BaseFragment{
 //        newses.add(news2);
 
         adapter = new NewsAdapter(getActivity(),newses);
-        ScaleInAnimationAdapter scaleInAnimationAdapter = new ScaleInAnimationAdapter(adapter);
         recyclerView.setAdapter(adapter);
-        recyclerView.setItemAnimator(new SlideInDownAnimator());
+        recyclerView.setItemAnimator(new SlideInLeftAnimator());
         recyclerView.setDefaultOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -110,86 +103,28 @@ public class HomeFragment extends BaseFragment{
 
     }
 
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        Utils.log("attached");
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-            ArrayList<News> datas = (ArrayList<News>) savedInstanceState.getSerializable("datas");
-            if (datas != null) {
-                adapter.addAll(datas);
-            }
-        }
-
-
-        Utils.log("onCreate");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Utils.log("destroy");
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Utils.log("destroyview");
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        Utils.log("onPause");
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        Utils.log("onStop");
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        Utils.log("onStart");
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        Utils.log("onDetach");
-    }
-
     private void loadData() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
 
-                adapter.add(new News("マルキューヨンマル。提督の皆さん、おはようございます！\n" +
+                adapter.insert(new News("マルキューヨンマル。提督の皆さん、おはようございます！\n" +
                         "今日は金曜日！関東以北では今日も強い雨の降るエリアがありそうです。天候にも注意しつつ、金曜カレーで滋養と曜日感覚を補強して、今週末も元気に乗り切ってまいりましょう！\n" +
                         "#艦これ\n" +
                         " \n" +
                         "0930。各位提督早上好！\n" +
                         "今天是周五！关东以北今天会有大范围强降雨。请一边注意天气一边享用金曜日咖喱补充营养补强时间感，本周末也精神满满地上吧！\n" +
-                        "#艦これ", "8:40 09-18"));
-                recyclerView.invalidate();
+                        "#艦これ", "8:40 09-18"), 0);
                 recyclerView.setRefreshing(false);
+                linearLayoutManager.scrollToPosition(0);
             }
         }, 1000);
-
-//        swipeRefreshLayout.setRefreshing(false);
         Utils.log("adapter size" + recyclerView.getAdapter().getItemCount());
 
     }
 
 
-    class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> {
+    class NewsAdapter extends UltimateViewAdapter<NewsAdapter.MyViewHolder> {
         List<News> datas;
         LayoutInflater inflater;
 
@@ -202,20 +137,14 @@ public class HomeFragment extends BaseFragment{
             inflater = LayoutInflater.from(ctx);
         }
 
-        public void add(News news) {
-            datas.add(0, news);
-            notifyDataSetChanged();
-        }
-
-        public void remove(int pos) {
-            datas.remove(pos);
-            notifyItemRemoved(pos);
-
+        @Override
+        public MyViewHolder getViewHolder(View view) {
+            return new MyViewHolder(view);
         }
 
         @Override
-        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            MyViewHolder holder = new MyViewHolder(inflater.inflate(R.layout.news_item,parent,false));
+        public MyViewHolder onCreateViewHolder(ViewGroup viewGroup) {
+            MyViewHolder holder = new MyViewHolder(inflater.inflate(R.layout.news_item,viewGroup,false));
             return holder;
         }
 
@@ -228,13 +157,30 @@ public class HomeFragment extends BaseFragment{
         }
 
         @Override
-        public int getItemCount() {
+        public RecyclerView.ViewHolder onCreateHeaderViewHolder(ViewGroup viewGroup) {return null;}
+
+        @Override
+        public void onBindHeaderViewHolder(RecyclerView.ViewHolder viewHolder, int i) {}
+
+
+        @Override
+        public int getAdapterItemCount() {
             return datas.size();
         }
 
-        public void addAll(ArrayList<News> datas) {
-            this.datas.addAll(datas);
-            notifyDataSetChanged();
+        @Override
+        public long generateHeaderId(int i) {
+            return 0;
+        }
+
+        public void insert(News news, int position) {
+            insert(datas, news, position);
+        }
+        public void remove(int position) {
+            remove(datas, position);
+        }
+        public void clear() {
+            clear(datas);
         }
 
         public List<News> getDatas() {
