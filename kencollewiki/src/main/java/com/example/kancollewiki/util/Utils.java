@@ -1,12 +1,17 @@
 package com.example.kancollewiki.util;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
 import android.util.Log;
 import android.util.SparseArray;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kancollewiki.R;
@@ -31,5 +36,17 @@ public class Utils {
             viewHolder.put(id, childView);
         }
         return (T) childView;
+    }
+
+    public static boolean isNetworkConnect(Context ctx) {
+        ConnectivityManager con = (ConnectivityManager) ctx.getSystemService(Activity.CONNECTIVITY_SERVICE);
+        boolean wifi = con.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();
+        boolean internet = con.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();
+        return wifi|internet;
+
+    }
+
+    public static void makeToast(Context ctx, String message) {
+        Toast.makeText(ctx, message, Toast.LENGTH_LONG).show();
     }
 }

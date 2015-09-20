@@ -40,4 +40,6 @@ public class C {
     public static final int SHORT_RANGE = 0;
     public static final int MIDDLE_RAGNE = 1;
     public static final int FAR_RANGE = 2;
+
+    public static final String NEWS_URL = "http://t.kcwiki.moe/page/";
 }
