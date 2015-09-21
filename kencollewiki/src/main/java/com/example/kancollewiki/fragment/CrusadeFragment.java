@@ -10,14 +10,6 @@ import android.view.ViewGroup;
 
 import com.example.kancollewiki.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link CrusadeFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link CrusadeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class CrusadeFragment extends BaseFragment {
 
     public CrusadeFragment() {

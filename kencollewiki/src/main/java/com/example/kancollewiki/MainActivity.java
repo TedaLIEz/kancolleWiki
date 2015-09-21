@@ -1,10 +1,10 @@
 package com.example.kancollewiki;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
@@ -35,7 +35,7 @@ public class MainActivity extends BaseActivity {
     Toolbar toolbar;
     Fragment homeFragment,shipFragment,levelFragment,taskFragment,crusadeFragment,equipFragment;
     Fragment currentFragment = null;
-    FragmentManager manager = getFragmentManager();
+    FragmentManager manager = getSupportFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +87,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        getFragmentManager().beginTransaction().add(R.id.container, homeFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.container, homeFragment).commit();
         currentFragment = homeFragment;
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -139,7 +139,7 @@ public class MainActivity extends BaseActivity {
 
     private void switchFragment(Fragment to) {
         if(currentFragment != to) {
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
             if (!to.isAdded()) {
                 transaction.hide(currentFragment).add(R.id.container, to, to.getClass().getSimpleName()).commit();

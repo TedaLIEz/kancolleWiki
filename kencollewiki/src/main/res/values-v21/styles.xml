@@ -1,31 +1,36 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="@android:style/Theme.Material.NoActionBar">
 
-    </style>
     <style name="MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:colorPrimary">@color/colorPrimary</item>
-        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>>
+
+    </style>
+    <style name="MainActivityStyle" parent="MyTheme">
+        <item name="android:actionMenuTextAppearance">@style/MainActivityStyle.MenuStyle</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:elevation">3dp</item>
     </style>
-    <style name="MyActionBarStyle" parent="@android:style/Theme.Material.Light">
+    <style name="ShipActivityStyle" parent="MyTheme">
+
     </style>
 
-    <style name="MyMenuStyle">
+
+    <style name="NavigationBarStyle" parent="MyTheme">
+
+    </style>
+
+    <style name="MainActivityStyle.MenuStyle">
         <item name="android:textSize">@dimen/abc_text_size_medium_material</item>
     </style>
+
     <style name="Widget.CardContent" parent="android:Widget">
+        <item name="android:elevation">5dp</item>
         <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingRight">16dp</item>
-        <item name="android:paddingTop">16dp</item>
-        <item name="android:paddingBottom">16dp</item>
+        <item name="android:paddingTop">24dp</item>
+        <item name="android:paddingBottom">24dp</item>
         <item name="android:orientation">vertical</item>
-
-    </style>
-    <style name="AppTheme.MyTextAppearance" parent="@style/TextAppearance.AppCompat.Title">
-        <item name="android:textSize">@dimen/abc_text_size_small_material</item>
     </style>
 </resources>

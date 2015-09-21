@@ -1,13 +1,14 @@
 package com.example.kancollewiki.bean.ship;
 
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 /**
  * Created by Administrator on 2015/9/14.
  * 船只抽象类
  */
-public abstract class ShipClass implements Comparator<ShipClass>{
+public abstract class ShipClass implements Comparator<ShipClass>,Serializable{
     @Override
     public boolean equals(Object o) {
         ShipClass shipClass;
@@ -60,4 +61,6 @@ public abstract class ShipClass implements Comparator<ShipClass>{
         result = 31 * result + pid;
         return result;
     }
+
+    public abstract String toString();
 }

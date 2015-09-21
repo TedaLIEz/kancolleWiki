@@ -10,7 +10,7 @@ public final class DDShip extends ShipClass{
     private int range = C.SHORT_RANGE;
     private static final DDShip ddShip = new DDShip();
 
-    private DDShip(){throw new AssertionError();}
+    private DDShip(){}
     public static DDShip getInstance()
     {
         return ddShip;

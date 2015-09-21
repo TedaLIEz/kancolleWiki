@@ -6,4 +6,6 @@
     <dimen name="nav_header_width">160dp</dimen>
     <dimen name="nav_avator_width">98dp</dimen>
     <dimen name="card_margin">16dp</dimen>
+    <dimen name="navigation_elevation">15dp</dimen>
+
 </resources>

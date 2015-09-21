@@ -7,17 +7,27 @@
     <style name="MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:colorPrimary">@color/colorPrimary</item>
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:actionMenuTextAppearance">@style/MyMenuStyle</item>
     </style>
-    <style name="MyActionBarStyle" parent="@android:style/Theme.Material.Light">
+    <style name="MainActivityStyle" parent="MyTheme">
+        <item name="android:actionBarStyle">@style/NavigationBarStyle</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:actionMenuTextAppearance">@style/MainActivityStyle.MenuStyle</item>
+    </style>
+    <style name="ShipActivityStyle" parent="MyTheme">
 
     </style>
-    <style name="MyMenuStyle">
+
+
+    <style name="NavigationBarStyle" parent="@android:style/Theme.Material.Light">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="MainActivityStyle.MenuStyle">
         <item name="android:textSize">@dimen/abc_text_size_medium_material</item>
     </style>
+
     <style name="Widget.CardContent" parent="android:Widget">
+        <item name="android:elevation">5dp</item>
         <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingRight">16dp</item>
         <item name="android:paddingTop">24dp</item>

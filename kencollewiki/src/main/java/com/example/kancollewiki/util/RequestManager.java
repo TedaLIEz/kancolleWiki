@@ -2,6 +2,8 @@ package com.example.kancollewiki.util;
 
 import android.app.DownloadManager;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.util.LruCache;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,6 +20,7 @@ public class RequestManager {
 
     public static void init(Context context) {
         mRequestQueue = Volley.newRequestQueue(context);
+        mImageLoader = new ImageLoader(mRequestQueue, new BitmapCache());
     }
 
     public static RequestQueue getRequestQueue() {
@@ -46,6 +49,29 @@ public class RequestManager {
             throw new IllegalStateException("ImageLoader not init");
         }
 
+    }
+
+    static class BitmapCache implements ImageLoader.ImageCache {
+        private LruCache<String, Bitmap> mCache;
+
+        public BitmapCache() {
+            int maxSize = 10 * 1024 * 1024;
+            mCache = new LruCache<String, Bitmap>(maxSize) {
+                @Override
+                protected int sizeOf(String key, Bitmap bitmap) {
+                    return bitmap.getRowBytes() * bitmap.getHeight();
+                }
+            };
+        }
+        @Override
+        public Bitmap getBitmap(String url) {
+            return mCache.get(url);
+        }
+
+        @Override
+        public void putBitmap(String url, Bitmap bitmap) {
+            mCache.put(url, bitmap);
+        }
     }
 }
 

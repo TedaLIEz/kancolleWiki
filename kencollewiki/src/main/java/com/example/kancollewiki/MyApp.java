@@ -2,6 +2,7 @@ package com.example.kancollewiki;
 
 import android.app.Application;
 
+import com.example.kancollewiki.util.PicJsonArray;
 import com.example.kancollewiki.util.RequestManager;
 
 /**
@@ -16,5 +17,8 @@ public class MyApp extends Application {
 
     private void init() {
         RequestManager.init(this);
+        PicJsonArray.init(this);
     }
+
+
 }

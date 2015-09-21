@@ -42,4 +42,5 @@ public class C {
     public static final int FAR_RANGE = 2;
 
     public static final String NEWS_URL = "http://t.kcwiki.moe/page/";
+    public static final String PIC_URL = "http://kcwiki.ikk.me/commons/";
 }

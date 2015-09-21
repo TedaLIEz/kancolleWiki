@@ -10,15 +10,7 @@ import android.view.ViewGroup;
 
 import com.example.kancollewiki.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link EquipFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link EquipFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class EquipFragment extends Fragment {
+public class EquipFragment extends BaseFragment {
 
     public EquipFragment() {
         // Required empty public constructor

@@ -12,7 +12,15 @@ import java.util.List;
  *
  */
 public final class Ship extends ShipClass implements Comparable<Ship>{
+    public String getPic_url() {
+        return pic_url;
+    }
 
+    public void setPic_url(String pic_url) {
+        this.pic_url = pic_url;
+    }
+
+    private String pic_url;
     private int id;
     //对应XX型id
     private int pid;

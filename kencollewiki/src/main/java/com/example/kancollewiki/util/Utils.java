@@ -1,8 +1,10 @@
 package com.example.kancollewiki.util;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
@@ -48,5 +50,9 @@ public class Utils {
 
     public static void makeToast(Context ctx, String message) {
         Toast.makeText(ctx, message, Toast.LENGTH_LONG).show();
+    }
+
+    public static void startSharedElementActivity(Context ctx, Intent intent, ActivityOptions activityOptions) {
+        ctx.startActivity(intent, activityOptions.toBundle());
     }
 }
