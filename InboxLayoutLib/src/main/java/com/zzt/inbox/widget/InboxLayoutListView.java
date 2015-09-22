@@ -7,6 +7,8 @@ import android.widget.Adapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import com.zzt.library.R;
+
 /**
  * Created by zzt on 2015/1/31.
  */
@@ -29,6 +31,7 @@ public class InboxLayoutListView extends InboxLayoutBase <ListView>{
     protected ListView createDragableView(Context context, AttributeSet attrs) {
         dragableView = new ListView(context);
         dragableView.setId(android.R.id.list);
+        dragableView.setDividerHeight(0);
         return dragableView;
     }
 

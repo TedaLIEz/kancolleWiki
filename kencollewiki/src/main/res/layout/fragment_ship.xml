@@ -10,6 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <com.example.kancollewiki.view.MyListLinearLayout
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:id="@+id/shipclass_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

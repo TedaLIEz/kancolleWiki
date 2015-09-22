@@ -2,33 +2,63 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:transitionName="change_ship_item"
+
     android:layout_height="wrap_content">
-
     <LinearLayout
-
-        android:layout_margin="18dp"
-        android:id="@+id/ship_item"
-        android:layout_width="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-
+        <LinearLayout
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/ship_item"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/ship_type"
-            android:text="战舰"
-            android:textSize="@dimen/abc_text_size_medium_material"
-            android:gravity="center_vertical" />
-        <View
-
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-        <ImageView
-            android:layout_gravity="center_vertical"
-            android:background="@drawable/ic_chevron_right_black_36dp"
-            android:layout_width="36dp"
-            android:layout_height="36dp" />
+            android:orientation="horizontal"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/ship_type"
+                android:text="战舰"
+                android:textSize="@dimen/abc_text_size_medium_material"
+                android:gravity="center_vertical" />
+            <TextView
+                android:text="1番舰"
+                android:layout_weight="0.05"
+                android:id="@+id/ship_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:visibility="invisible"
+                android:id="@+id/ship_paper"
+                android:paddingLeft="2dp"
+                android:paddingRight="2dp"
+                android:layout_weight="0.1"
+                android:textColor="@android:color/holo_red_light"
+                android:text="图"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_weight="0.1"
+                android:id="@+id/ship_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="高速"/>
+            <TextView
+                android:paddingLeft="5dp"
+                android:layout_weight="0.1"
+                android:textColor="@android:color/holo_red_light"
+                android:text="改二"
+                android:id="@+id/ship_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
+
+
 
 </LinearLayout>

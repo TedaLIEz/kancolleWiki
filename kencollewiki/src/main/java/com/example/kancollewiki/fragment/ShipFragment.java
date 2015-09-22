@@ -96,21 +96,18 @@ public class ShipFragment extends BaseFragment{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (!parent.getAdapter().isEmpty()) {
-                    ShipClass shipCLass = (ShipClass) parent.getAdapter().getItem(position);
+                    ShipClass shipClass = (ShipClass) parent.getAdapter().getItem(position);
+                    if (shipClass instanceof Ship) {
+                        startActivity(new Intent(getActivity(), ShipActivity.class));
+                    }
 //                    if (Build.VERSION.SDK_INT >= 21) {
 //                        Intent intent = new Intent(getActivity(), ShipActivity.class);
 //                        intent.putExtra("ship",shipCLass);
 //                        ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(getActivity(), view, "change_ship_item");
 //                        Utils.startSharedElementActivity(getActivity(), intent, activityOptions);
 //                    }
-                    startActivity(new Intent(getActivity(), ShipActivity.class));
+
                 }
-
-
-
-
-
-
             }
         });
         return rootView;
@@ -119,14 +116,26 @@ public class ShipFragment extends BaseFragment{
     @NonNull
     private ArrayList<ArrayList<ShipClass>> initData() {
         tmp = new ArrayList<>();
-        AbstractShipClass test = new AbstractShipClass.Builder().createClass(DDShip.getInstance(), 0, "白露级").build();
-        Ship poi = new Ship.Builder().createShipGirl(test, 0, "夕立", true).build();
+        AbstractShipClass bailu = new AbstractShipClass.Builder().createClass(DDShip.getInstance(), 0, "白露级", C.HIGH_SPEED).build();
+        AbstractShipClass fubukis = new AbstractShipClass.Builder().createClass(DDShip.getInstance(), 1, "吹雪级", C.HIGH_SPEED).build();
+        Ship fubuki = new Ship.Builder().createShipGirl(fubukis, 1, "吹雪", true).updateTime(2).build();
+        Ship snow = new Ship.Builder().createShipGirl(fubukis, 2, "白雪", true).updateTime(1).build();
+        Ship deepsnow = new Ship.Builder().createShipGirl(fubukis, 3, "深雪", true).updateTime(1).build();
+        Ship chuxue = new Ship.Builder().createShipGirl(fubukis, 4 , "初雪", true).updateTime(1).build();
+        Ship congyun = new Ship.Builder().createShipGirl(fubukis, 5, "从云", true).updateTime(2).build();
+        Ship poi = new Ship.Builder().createShipGirl(bailu, 1, "夕立", true).updateTime(2).build();
         poi.setPic_url("0/0e/KanMusu082Illust.png");
-        Ship shigure = new Ship.Builder().createShipGirl(test, 1, "时雨", true).build();
+        Ship shigure = new Ship.Builder().createShipGirl(bailu, 2, "时雨", true).updateTime(2).build();
         shigure.setPic_url("b/b3/KanMusu080Illust.png");
+        tmp.add(bailu);
         tmp.add(poi);
         tmp.add(shigure);
-
+        tmp.add(fubukis);
+        tmp.add(fubuki);
+        tmp.add(snow);
+        tmp.add(deepsnow);
+        tmp.add(chuxue);
+        tmp.add(congyun);
         tmp2 = new ArrayList<>();
         tmp3 = new ArrayList<>();
         ArrayList<ArrayList<ShipClass>> lists = new ArrayList<>();

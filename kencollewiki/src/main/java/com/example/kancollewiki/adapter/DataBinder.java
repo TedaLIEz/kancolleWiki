@@ -21,5 +21,7 @@ public abstract class DataBinder<T extends RecyclerView.ViewHolder> {
 
     abstract public void bindViewHolder(T holder, int pos);
 
+    abstract public void newHeaderViewHolder(ViewGroup parent);
+
     abstract public int getItemCount();
 }

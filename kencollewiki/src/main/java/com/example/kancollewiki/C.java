@@ -43,4 +43,7 @@ public class C {
 
     public static final String NEWS_URL = "http://t.kcwiki.moe/page/";
     public static final String PIC_URL = "http://kcwiki.ikk.me/commons/";
+
+    public static final int HIGH_SPEED = 1;
+    public static final int LOW_SPEED = 0;
 }

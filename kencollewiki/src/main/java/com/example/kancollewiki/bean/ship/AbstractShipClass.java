@@ -10,6 +10,12 @@ public final class AbstractShipClass extends ShipClass implements Comparable<Abs
     private String name;
     private int id;
     private int pid;
+    private int speed;
+
+    public int getSpeed() {
+        return speed;
+    }
+
 
     public int getRange() {
         return range;
@@ -39,6 +45,7 @@ public final class AbstractShipClass extends ShipClass implements Comparable<Abs
         this.pid = builder.pid;
         this.range = builder.range;
         this.shipClass = builder.shipClass;
+        this.speed = builder.speed;
     }
 
     @Override
@@ -52,12 +59,14 @@ public final class AbstractShipClass extends ShipClass implements Comparable<Abs
         private int id;
         private int pid;
         private int range;
-        public Builder createClass(ShipClass shipClass, int id, String name) {
+        private int speed;
+        public Builder createClass(ShipClass shipClass, int id, String name, int speed) {
             this.shipClass = shipClass;
             this.name = name;
             this.id = id;
             this.pid = shipClass.getId();
             this.range = shipClass.getRange();
+            this.speed = speed;
             return this;
         }
         public AbstractShipClass build() {
