@@ -12,8 +12,9 @@ import java.util.List;
  *
  */
 public final class Ship extends ShipClass implements Comparable<Ship>{
-
+    //立绘Url
     private String pic_url;
+
     private int id;
     //对应XX型id
     private int pid;
@@ -22,12 +23,19 @@ public final class Ship extends ShipClass implements Comparable<Ship>{
     private boolean canUpdate;
     //舰种
     private ShipClass shipClass;
+    //是否已经升级
     private boolean isUpdate;
+    //升级等级
     private int updateLevel;
+    //升级消耗
     private String updateCost;
+    //出击消耗
     private String attackCost;
+    //船速
     private int speed;
+    //图纸改造
     private boolean needPaper;
+    //改造次数
     private int updateTime = 0;
     //舰型
     private AbstractShipClass abstractShipClass;
@@ -35,6 +43,12 @@ public final class Ship extends ShipClass implements Comparable<Ship>{
     private List<Weapon> weapons;
     //掉落
     private List<Locations> locations;
+
+    private String painter;
+
+    public String getPainter() {
+        return painter;
+    }
 
     public ShipDataBean getBean() {
         return bean;
@@ -44,6 +58,9 @@ public final class Ship extends ShipClass implements Comparable<Ship>{
     private ShipDataBean bean;
     //射程
     private int range;
+    //搭载
+    private boolean hasPlane;
+    private List<Integer> planes;
 
 
 
@@ -116,6 +133,14 @@ public final class Ship extends ShipClass implements Comparable<Ship>{
         return pic_url;
     }
 
+    public boolean isHasPlane() {
+        return hasPlane;
+    }
+
+    public List<Integer> getPlanes() {
+        return planes;
+    }
+
     public void setPic_url(String pic_url) {
         this.pic_url = pic_url;
     }
@@ -139,6 +164,9 @@ public final class Ship extends ShipClass implements Comparable<Ship>{
         needPaper = builder.needPaper;
         updateTime = builder.updateTime;
         speed = builder.speed;
+        hasPlane = builder.hasPlane;
+        planes = builder.planes;
+        painter = builder.painter;
     }
 
     @Override
@@ -171,7 +199,9 @@ public final class Ship extends ShipClass implements Comparable<Ship>{
         private int speed;
         private boolean needPaper = false;
         private int updateTime = 0;
-
+        private boolean hasPlane = false;
+        private List<Integer> planes = null;
+        private String painter;
         /**
          * 构造舰娘
          * @param id
@@ -197,6 +227,11 @@ public final class Ship extends ShipClass implements Comparable<Ship>{
         }
         public Builder attackCost(String attackCost) {
             this.attackCost = attackCost;
+            return this;
+        }
+
+        public Builder painter(String painter) {
+            this.painter = painter;
             return this;
         }
         public Builder updateCost(String val) {
@@ -225,9 +260,16 @@ public final class Ship extends ShipClass implements Comparable<Ship>{
             this.isUpdate = isUpdate;
             return this;
         }
+
+        public Builder hasPlanes(boolean hasPlane) {
+            this.hasPlane = hasPlane;
+            return this;
+        }
         public Ship build() {
             return new Ship(this);
         }
+
+
     }
 
     @Override

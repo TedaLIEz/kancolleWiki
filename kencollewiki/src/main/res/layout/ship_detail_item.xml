@@ -16,11 +16,17 @@
             android:layout_height="wrap_content" />
         <TextView
             android:id="@+id/ship_detail_data"
-            android:gravity="end|bottom"
+            android:gravity="end|center"
             android:layout_weight="1"
             android:textAppearance="@style/TextAppearance.AppCompat.Menu"
-            android:text="text"
+            android:text="0"
             android:layout_width="0dp"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:layout_marginLeft="4dp"
+            android:id="@+id/ship_detail_next"
+            android:background="@drawable/ic_navigate_next_black_24dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent" />
     </LinearLayout>
 </LinearLayout>

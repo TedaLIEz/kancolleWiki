@@ -5,6 +5,7 @@ import android.animation.TimeInterpolator;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,6 +23,8 @@ import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.example.kancollewiki.C;
 import com.example.kancollewiki.R;
@@ -48,6 +51,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class HomeFragment extends BaseFragment {
     private static final int REFRESH_COMPLETE = 0x110;
@@ -57,6 +62,7 @@ public class HomeFragment extends BaseFragment {
     LinearLayoutManager linearLayoutManager;
     ProgressDialog pd;
     int page = 2;
+    CircleImageView circleImageView;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -75,7 +81,7 @@ public class HomeFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_home,container,false);
+        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         recyclerView = (UltimateRecyclerView) rootView.findViewById(R.id.recyclerview);
         initRecyclerView();
         return rootView;
@@ -169,6 +175,7 @@ public class HomeFragment extends BaseFragment {
         }
 
     }
+
 
     private void parseNews(String response) {
         Document doc = Jsoup.parse(response);

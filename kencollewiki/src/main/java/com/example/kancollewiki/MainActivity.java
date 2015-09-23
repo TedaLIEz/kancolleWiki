@@ -1,5 +1,7 @@
 package com.example.kancollewiki;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -9,9 +11,15 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageRequest;
 import com.example.kancollewiki.fragment.CrusadeFragment;
 import com.example.kancollewiki.fragment.EquipFragment;
 import com.example.kancollewiki.fragment.HomeFragment;
@@ -20,10 +28,12 @@ import com.example.kancollewiki.fragment.ShipFragment;
 import com.example.kancollewiki.fragment.TaskFragment;
 
 import com.example.kancollewiki.activities.BaseActivity;
+import com.example.kancollewiki.util.RequestManager;
 import com.example.kancollewiki.util.Utils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class MainActivity extends BaseActivity {
@@ -35,12 +45,14 @@ public class MainActivity extends BaseActivity {
     Toolbar toolbar;
     Fragment homeFragment,shipFragment,levelFragment,taskFragment,crusadeFragment,equipFragment;
     Fragment currentFragment = null;
+    CircleImageView circleImageView;
     FragmentManager manager = getSupportFragmentManager();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
         initFragments();
         initView();
     }
@@ -79,6 +91,10 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initView() {
+        circleImageView = (CircleImageView) navigationView.findViewById(R.id.avator);
+        ImageLoader imageLoader = RequestManager.getImageLoader();
+        ImageLoader.ImageListener listener = ImageLoader.getImageListener(circleImageView, R.drawable.avator2, R.drawable.avator2);
+        imageLoader.get(C.AVATAR_URL,listener);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,8 +108,6 @@ public class MainActivity extends BaseActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
-
-
                 switch (menuItem.getItemId()) {
                     case R.id.home:
                         switchFragment(homeFragment);

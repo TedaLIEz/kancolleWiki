@@ -17,4 +17,36 @@ public class Weapon {
     private String performance;
     private List<Drawable> drawables;
     private List<String> ships;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPerformance() {
+        return performance;
+    }
+
+    public void setPerformance(String performance) {
+        this.performance = performance;
+    }
+
+    public List<Drawable> getDrawables() {
+        return drawables;
+    }
+
+    public void setDrawables(List<Drawable> drawables) {
+        this.drawables = drawables;
+    }
+
+    public List<String> getShips() {
+        return ships;
+    }
+
+    public void setShips(List<String> ships) {
+        this.ships = ships;
+    }
 }
