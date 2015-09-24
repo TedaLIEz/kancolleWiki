@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -40,6 +41,7 @@ import com.marshalchen.ultimaterecyclerview.animators.ScaleInTopAnimator;
 import com.marshalchen.ultimaterecyclerview.animators.SlideInLeftAnimator;
 import com.marshalchen.ultimaterecyclerview.animators.adapters.SlideInBottomAnimationAdapter;
 import com.marshalchen.ultimaterecyclerview.animators.internal.ViewHelper;
+import com.marshalchen.ultimaterecyclerview.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -94,6 +96,7 @@ public class HomeFragment extends BaseFragment {
         linearLayoutManager = new LinearLayoutManager(recyclerView.getContext());
         Utils.log("adapter size" + adapter.getItemCount());
         recyclerView.setLayoutManager(linearLayoutManager);
+
         recyclerView.setAdapter(adapter);
         recyclerView.setItemAnimator(new ScaleInLeftAnimator());
         recyclerView.enableLoadmore();
@@ -235,6 +238,7 @@ public class HomeFragment extends BaseFragment {
             return holder;
         }
 
+
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
             if (position > mLastPosition) {
@@ -250,7 +254,7 @@ public class HomeFragment extends BaseFragment {
             /**
              * You should and if when customLoadMore layout is added
              */
-            if (position < datas.size()) {
+            if ((position < getItemCount() && customHeaderView != null ? position <= datas.size() : position < datas.size()) && (customHeaderView != null ? position > 0 : true)) {
                 News news = datas.get(position);
                 holder.tv_date.setText(Html.fromHtml(news.getDate()));
                 holder.tv_content.setText(Html.fromHtml(news.getContent()));
@@ -262,10 +266,13 @@ public class HomeFragment extends BaseFragment {
         }
 
         @Override
-        public RecyclerView.ViewHolder onCreateHeaderViewHolder(ViewGroup viewGroup) {return null;}
+        public RecyclerView.ViewHolder onCreateHeaderViewHolder(ViewGroup viewGroup) {
+            return null;
+        }
 
         @Override
-        public void onBindHeaderViewHolder(RecyclerView.ViewHolder viewHolder, int i) {}
+        public void onBindHeaderViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+        }
 
 
         @Override
@@ -275,9 +282,20 @@ public class HomeFragment extends BaseFragment {
 
         @Override
         public long generateHeaderId(int i) {
-            return 0;
+            if (getItem(i) != null)
+                return getItem(i).hashCode();
+            else return -1;
         }
-
+        public News getItem(int pos) {
+            if (customHeaderView != null) {
+                pos--;
+            }
+            if (pos < datas.size()) {
+                return datas.get(pos);
+            } else {
+                return new News();
+            }
+        }
         public void addAll(List<News> data) {
             datas.addAll(data);
             notifyDataSetChanged();

@@ -45,14 +45,17 @@ public class ShipActivity extends BaseActivity {
     ViewPager viewPager;
     @Bind(R.id.tabs)
     TabLayout tabLayout;
+
+    Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ship);
         ButterKnife.bind(this);
+        bundle = getIntent().getExtras();
         initView();
-//        Ship ship = (Ship) getIntent().getSerializableExtra("ship");
-//        Utils.log("shipActivity pic_url" + ship.getPic_url());
+        Ship ship = (Ship) bundle.getSerializable("ship");
+        Utils.log(ship.toString());
     }
 
     private void initView() {
@@ -68,9 +71,15 @@ public class ShipActivity extends BaseActivity {
     }
     private void setupViewPager(ViewPager viewPager) {
         ShipFragmentAdapter adapter = new ShipFragmentAdapter(getSupportFragmentManager());
-        adapter.addFragment(new ShipDetailFragment(), "1");
-        adapter.addFragment(new ShipDetailFragment(), "2");
-        adapter.addFragment(new ShipDetailFragment(), "3");
+        ShipDetailFragment shipDetailFragment = new ShipDetailFragment();
+        ShipDetailFragment shipDetailFragment1 = new ShipDetailFragment();
+        ShipDetailFragment shipDetailFragment2 = new ShipDetailFragment();
+        shipDetailFragment1.setArguments(bundle);
+        shipDetailFragment2.setArguments(bundle);
+        shipDetailFragment.setArguments(bundle);
+        adapter.addFragment(shipDetailFragment, "1");
+        adapter.addFragment(shipDetailFragment1, "2");
+        adapter.addFragment(shipDetailFragment2, "3");
         viewPager.setAdapter(adapter);
     }
     static class ShipFragmentAdapter extends FragmentPagerAdapter {

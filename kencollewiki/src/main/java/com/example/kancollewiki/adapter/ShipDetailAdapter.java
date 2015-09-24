@@ -4,34 +4,49 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.kancollewiki.R;
+import com.example.kancollewiki.util.Utils;
 import com.marshalchen.ultimaterecyclerview.UltimateDifferentViewTypeAdapter;
 import com.marshalchen.ultimaterecyclerview.UltimateRecyclerviewViewHolder;
+import com.marshalchen.ultimaterecyclerview.multiViewTypes.DataBinder;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * Created by Administrator on 2015/9/23.
  */
-public class ShipDetailAdapter<T extends ShipDetailFragmentBinder> extends UltimateDifferentViewTypeAdapter{
-    List<T> binders;
+public class ShipDetailAdapter extends UltimateDifferentViewTypeAdapter{
+    List<ShipDetailFragmentBinder> binders;
     @Override
     public Enum getEnumFromPosition(int i) {
-        int pos = 0;
-        for (ShipDetailFragmentBinder binder : binders) {
-            pos = binder.getItemCount();
-            if (i < pos)
-                break;
-            i -= pos;
+        int itemCount = 0;
+        for (int viewType = 0; viewType < binders.size(); viewType++) {
+            itemCount += binders.get(viewType).getItemCount();
+            if (i < itemCount) {
+                return ShipDetailType.values()[viewType];
+            }
         }
-        return ShipDetailType.values()[i];
+        throw new IllegalArgumentException("arg pos is invalid");
     }
 
+    private String getEnumName(int i) {
+        int itemCount = 0;
+        for (int viewType = 0; viewType < binders.size(); viewType++) {
+            itemCount += binders.get(viewType).getItemCount();
+            if (i < itemCount) {
+                return ShipDetailType.values()[viewType].getText();
+            }
+        }
+        throw new IllegalArgumentException("arg pos is invalid");
+    }
+    public ShipDetailAdapter(){}
 
-    public ShipDetailAdapter(List<T> binders){
+    public void setBinders(List<ShipDetailFragmentBinder> binders) {
         this.binders = binders;
-        for (ShipDetailFragmentBinder binder : binders) {
+        for (DataBinder binder : binders) {
             if (binder instanceof ShipDetailBinder) {
                 putBinder(ShipDetailType.SHIP, binder);
             }
@@ -70,22 +85,72 @@ public class ShipDetailAdapter<T extends ShipDetailFragmentBinder> extends Ultim
         return binders.size();
     }
 
+
+
+    /**
+     * must return different id if headerview needed.
+     * @param i
+     * @return
+     */
     @Override
     public long generateHeaderId(int i) {
-        return 0;
+        if (binders.get(0).getShip().isCanUpdate()) {
+            if (i < 9) {
+                return 1;
+            } else {
+                return 0;
+            }
+        } else {
+            if (i < 6) {
+                return 1;
+            } else {
+                return 0;
+            }
+        }
+
     }
-
-
 
     @Override
     public RecyclerView.ViewHolder onCreateHeaderViewHolder(ViewGroup viewGroup) {
-        return null;
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.stick_header_item, viewGroup, false);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindHeaderViewHolder(RecyclerView.ViewHolder viewHolder, int i) {}
+    public void onBindHeaderViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
+        if (viewHolder instanceof ViewHolder) {
+            ViewHolder mViewHolder = (ViewHolder) viewHolder;
+            Utils.log("bind header view" + i);
+            mViewHolder.tv_sticky.setText(getEnumName(i));
+        }
+
+    }
+
+
 
     enum ShipDetailType {
-        SHIP,WEAPON
+        SHIP("舰船数据"),WEAPON("装备/搭载");
+        String text;
+        ShipDetailType(String text) {
+            this.text = text;
+        }
+
+        public String getText() {
+            return text;
+        }
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder {
+        TextView tv_sticky;
+        View itemView;
+        public ViewHolder(View itemView) {
+            super(itemView);
+            this.itemView = itemView;
+            tv_sticky = Utils.findViewById(itemView, R.id.stick_text);
+        }
+
+        public void setInvisible() {
+            itemView.setVisibility(View.GONE);
+        }
     }
 }

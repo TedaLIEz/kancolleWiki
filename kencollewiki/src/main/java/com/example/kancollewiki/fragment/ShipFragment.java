@@ -98,7 +98,11 @@ public class ShipFragment extends BaseFragment{
                 if (!parent.getAdapter().isEmpty()) {
                     ShipClass shipClass = (ShipClass) parent.getAdapter().getItem(position);
                     if (shipClass instanceof Ship) {
-                        startActivity(new Intent(getActivity(), ShipActivity.class));
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("ship", shipClass);
+                        Intent intent = new Intent(getActivity(), ShipActivity.class);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
                     }
 //                    if (Build.VERSION.SDK_INT >= 21) {
 //                        Intent intent = new Intent(getActivity(), ShipActivity.class);

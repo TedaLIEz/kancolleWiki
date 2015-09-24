@@ -34,4 +34,6 @@ public abstract class ShipDetailFragmentBinder extends DataBinder<ShipDetailFrag
 
     @Override
     public abstract int getItemCount();
+
+
 }

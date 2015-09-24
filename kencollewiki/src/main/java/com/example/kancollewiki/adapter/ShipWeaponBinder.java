@@ -31,9 +31,9 @@ public class ShipWeaponBinder extends ShipDetailFragmentBinder{
     public void bindViewHolder(ShipDetailFragmentViewHolder viewHolder, int i) {
         viewHolder.tv_name.setText(weapons.get(i).getName());
         if (getShip().isHasPlane()) {
-            viewHolder.tv_data.setText("0");
-        } else {
             viewHolder.tv_data.setText(getShip().getPlanes().get(i));
+        } else {
+            viewHolder.setTv_dataInvisible();
         }
     }
 

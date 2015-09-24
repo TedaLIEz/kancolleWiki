@@ -21,7 +21,8 @@ public class ShipDetailFragmentViewHolder extends UltimateRecyclerviewViewHolder
         iv_next = Utils.findViewById(itemView, R.id.ship_detail_next);
     }
 
-    public void setInvisible () {
+    public void setImageInvisible () {
         iv_next.setVisibility(View.INVISIBLE);
     }
+    public void setTv_dataInvisible () {tv_data.setVisibility(View.INVISIBLE);}
 }

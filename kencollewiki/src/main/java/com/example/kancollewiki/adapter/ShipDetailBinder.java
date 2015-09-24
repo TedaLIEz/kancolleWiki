@@ -46,13 +46,19 @@ public class ShipDetailBinder extends ShipDetailFragmentBinder{
 
     @Override
     public void bindViewHolder(ShipDetailFragmentViewHolder viewHolder, int i) {
+
         if (i < getItemCount()) {
-
             viewHolder.tv_name.setText(ShipDataType.values()[i].getText());
+            if (i < 2) {
+                viewHolder.setTv_dataInvisible();
+            } else {
+                if (lists.get(ShipDataType.values()[i].getText()) != null) {
+                    viewHolder.tv_data.setText(lists.get(ShipDataType.values()[i].getText()).toString());
+                }
 
-
+            }
             if (i > 4) {
-                viewHolder.setInvisible();
+                viewHolder.setImageInvisible();
             }
         }
 

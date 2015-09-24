@@ -1,11 +1,6 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<com.marshalchen.ultimaterecyclerview.UltimateRecyclerView
+    android:id="@+id/ship_detail"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.kancollewiki.fragment.ShipDetailFragment">
+    xmlns:android="http://schemas.android.com/apk/res/android"></com.marshalchen.ultimaterecyclerview.UltimateRecyclerView>
 
-    <com.marshalchen.ultimaterecyclerview.UltimateRecyclerView
-        android:id="@+id/ship_detail"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.marshalchen.ultimaterecyclerview.UltimateRecyclerView>
-
-</FrameLayout>

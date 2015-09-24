@@ -88,6 +88,14 @@ public final class Ship extends ShipClass implements Comparable<Ship>{
         return shipClass;
     }
 
+    public void setLocations(List<Locations> locations) {
+        this.locations = locations;
+    }
+
+    public void setWeapons(List<Weapon> weapons) {
+
+        this.weapons = weapons;
+    }
 
     public boolean isUpdate() {
         return isUpdate;
