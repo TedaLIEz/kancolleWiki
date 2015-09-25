@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="grey_light">#E0E0E0</color>
+    <color name="grey_dark">#BDBDBD</color>
+    <color name="white">#EEEEEE</color>
 </resources>

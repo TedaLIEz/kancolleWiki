@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-
+    android:orientation="vertical"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?android:attr/selectableItemBackground"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout
         android:layout_margin="@dimen/activity_horizontal_margin"
@@ -21,7 +24,6 @@
             android:gravity="end|center"
             android:layout_weight="1"
             android:textSize="@dimen/abc_text_size_medium_material"
-            android:text="0"
             android:layout_width="0dp"
             android:layout_height="match_parent" />
         <ImageView

@@ -10,9 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.kancollewiki.R;
+import com.example.kancollewiki.adapter.ShipBuildBinder;
 import com.example.kancollewiki.adapter.ShipDetailAdapter;
 import com.example.kancollewiki.adapter.ShipDetailBinder;
 import com.example.kancollewiki.adapter.ShipDetailFragmentBinder;
+import com.example.kancollewiki.adapter.ShipLocationBinder;
 import com.example.kancollewiki.adapter.ShipWeaponBinder;
 import com.example.kancollewiki.bean.Weapon;
 import com.example.kancollewiki.bean.ship.Ship;
@@ -70,25 +72,29 @@ public class ShipDetailFragment extends BaseFragment {
         weapons.add(weapon);
         weapons.add(weapon1);
         weapons.add(weapon2);
-        weapons.add(weapon);
-        weapons.add(weapon);
-        weapons.add(weapon);
-        weapons.add(weapon);
-        weapons.add(weapon);
-        weapons.add(weapon);
-        weapons.add(weapon);
-        weapons.add(weapon);
-        weapons.add(weapon);
-        weapons.add(weapon);
         ship.setWeapons(weapons);
+        List<String> locations = new ArrayList<>();
+        locations.add("1-1");
+        locations.add("2-1");
+        locations.add("3-1");
+        locations.add("4-1");
+        locations.add("5-1");
+        locations.add("6-1");
+        locations.add("3-2");
+        locations.add("2-2");
+        locations.add("3-2");
+        ship.setCanBuild(false);
+        ship.setLocations(locations);
         shipDetailAdapter = new ShipDetailAdapter();
-
-//        ultimateRecyclerView.add
         List<ShipDetailFragmentBinder> lists = new ArrayList<>();
         ShipDetailBinder shipDetailBinder = new ShipDetailBinder(shipDetailAdapter, ship);
-        ShipWeaponBinder shipWeaponBinder = new ShipWeaponBinder(shipDetailAdapter, ship, ship.getWeapons());
+        ShipWeaponBinder shipWeaponBinder = new ShipWeaponBinder(shipDetailAdapter, ship);
+        ShipLocationBinder shipLocationBinder = new ShipLocationBinder(shipDetailAdapter, ship);
+        ShipBuildBinder shipBuildBinder = new ShipBuildBinder(shipDetailAdapter, ship);
         lists.add(shipDetailBinder);
         lists.add(shipWeaponBinder);
+        lists.add(shipBuildBinder);
+        lists.add(shipLocationBinder);
         shipDetailAdapter.setBinders(lists);
     }
 

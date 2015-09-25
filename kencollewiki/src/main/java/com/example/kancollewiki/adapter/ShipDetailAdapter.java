@@ -53,6 +53,12 @@ public class ShipDetailAdapter extends UltimateDifferentViewTypeAdapter{
             if (binder instanceof ShipWeaponBinder) {
                 putBinder(ShipDetailType.WEAPON, binder);
             }
+            if (binder instanceof ShipLocationBinder) {
+                putBinder(ShipDetailType.LOCATIONS, binder);
+            }
+            if (binder instanceof ShipBuildBinder){
+                putBinder(ShipDetailType.BUILD, binder);
+            }
         }
     }
 
@@ -96,15 +102,23 @@ public class ShipDetailAdapter extends UltimateDifferentViewTypeAdapter{
     public long generateHeaderId(int i) {
         if (binders.get(0).getShip().isCanUpdate()) {
             if (i < 9) {
-                return 1;
-            } else {
                 return 0;
+            } else if (i < getDataBinder(ShipDetailType.SHIP).getItemCount() + getDataBinder(ShipDetailType.WEAPON).getItemCount()){
+                return 1;
+            } else if (i < getDataBinder(ShipDetailType.SHIP).getItemCount() + getDataBinder(ShipDetailType.WEAPON).getItemCount() + getDataBinder(ShipDetailType.BUILD).getItemCount()) {
+                return 2;
+            } else {
+                return 3;
             }
         } else {
             if (i < 6) {
-                return 1;
-            } else {
                 return 0;
+            } else if (i < getDataBinder(ShipDetailType.SHIP).getItemCount() + getDataBinder(ShipDetailType.WEAPON).getItemCount()){
+                return 1;
+            } else if (i < getDataBinder(ShipDetailType.SHIP).getItemCount() + getDataBinder(ShipDetailType.WEAPON).getItemCount() + getDataBinder(ShipDetailType.BUILD).getItemCount()) {
+                return 2;
+            } else {
+                return 3;
             }
         }
 
@@ -120,7 +134,6 @@ public class ShipDetailAdapter extends UltimateDifferentViewTypeAdapter{
     public void onBindHeaderViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
         if (viewHolder instanceof ViewHolder) {
             ViewHolder mViewHolder = (ViewHolder) viewHolder;
-            Utils.log("bind header view" + i);
             mViewHolder.tv_sticky.setText(getEnumName(i));
         }
 
@@ -129,7 +142,7 @@ public class ShipDetailAdapter extends UltimateDifferentViewTypeAdapter{
 
 
     enum ShipDetailType {
-        SHIP("舰船数据"),WEAPON("装备/搭载");
+        SHIP("舰船数据"),WEAPON("装备/搭载"),BUILD("入手方法"),LOCATIONS("掉落");
         String text;
         ShipDetailType(String text) {
             this.text = text;

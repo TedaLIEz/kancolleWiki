@@ -105,13 +105,14 @@ public class MainActivity extends BaseActivity {
 
         getSupportFragmentManager().beginTransaction().add(R.id.container, homeFragment).commit();
         currentFragment = homeFragment;
+        toolbar.setTitle(getResources().getString(R.string.fragment_home));
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.home:
                         switchFragment(homeFragment);
-                        toolbar.setTitle(HomeFragment.class.getSimpleName());
+                        toolbar.setTitle(getResources().getString(R.string.fragment_home));
                         break;
                     case R.id.level:
                         switchFragment(levelFragment);
@@ -119,19 +120,19 @@ public class MainActivity extends BaseActivity {
                     case R.id.ship:
                         switchFragment(shipFragment);
 
-                        toolbar.setTitle(ShipFragment.class.getSimpleName());
+                        toolbar.setTitle(getResources().getString(R.string.fragment_ship));
                         break;
                     case R.id.equipment:
                         switchFragment(equipFragment);
-                        toolbar.setTitle(EquipFragment.class.getSimpleName());
+                        toolbar.setTitle(getResources().getString(R.string.fragment_equip));
                         break;
                     case R.id.task:
                         switchFragment(taskFragment);
-                        toolbar.setTitle(TaskFragment.class.getSimpleName());
+                        toolbar.setTitle(getResources().getString(R.string.fragment_task));
                         break;
                     case R.id.crusade:
                         switchFragment(crusadeFragment);
-                        toolbar.setTitle(CrusadeFragment.class.getSimpleName());
+                        toolbar.setTitle(getResources().getString(R.string.fragment_crusade));
                         break;
                     default:
                         break;

@@ -22,13 +22,19 @@ import java.util.List;
 public class ShipWeaponBinder extends ShipDetailFragmentBinder{
     List<Weapon> weapons;
 
-    public ShipWeaponBinder(UltimateDifferentViewTypeAdapter dataBindAdapter, Ship ship, List<Weapon> weapons) {
+    public ShipWeaponBinder(UltimateDifferentViewTypeAdapter dataBindAdapter, Ship ship) {
         super(dataBindAdapter,ship);
-        this.weapons = weapons;
+        this.weapons = ship.getWeapons();
     }
 
     @Override
-    public void bindViewHolder(ShipDetailFragmentViewHolder viewHolder, int i) {
+    public void bindViewHolder(ShipDetailFragmentViewHolder viewHolder, final int i) {
+        viewHolder.setOnItemClickListener(new ShipDetailFragmentViewHolder.HolderClickListener() {
+            @Override
+            public void onItemClick(View v, int pos) {
+                Utils.log("click in weapon " + i + " >> " + weapons.get(i).getName() + " <<");
+            }
+        });
         viewHolder.tv_name.setText(weapons.get(i).getName());
         if (getShip().isHasPlane()) {
             viewHolder.tv_data.setText(getShip().getPlanes().get(i));

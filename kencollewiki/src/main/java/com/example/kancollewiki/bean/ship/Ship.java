@@ -1,7 +1,6 @@
 package com.example.kancollewiki.bean.ship;
 
 
-import com.example.kancollewiki.bean.Locations;
 import com.example.kancollewiki.bean.Weapon;
 
 import java.util.List;
@@ -15,6 +14,10 @@ public final class Ship extends ShipClass implements Comparable<Ship>{
     //立绘Url
     private String pic_url;
 
+
+
+    //声优
+    private String audio;
     private int id;
     //对应XX型id
     private int pid;
@@ -42,7 +45,7 @@ public final class Ship extends ShipClass implements Comparable<Ship>{
     //装备
     private List<Weapon> weapons;
     //掉落
-    private List<Locations> locations;
+    private List<String> locations;
 
     private String painter;
 
@@ -62,7 +65,24 @@ public final class Ship extends ShipClass implements Comparable<Ship>{
     private boolean hasPlane;
     private List<Integer> planes;
 
+    private boolean canBuild = true;
+    private boolean canLargeBuild = false;
 
+    public boolean isCanLargeBuild() {
+        return canLargeBuild;
+    }
+
+    public void setCanLargeBuild(boolean canLargeBuild) {
+        this.canLargeBuild = canLargeBuild;
+    }
+
+    public boolean isCanBuild() {
+        return canBuild;
+    }
+
+    public void setCanBuild(boolean canBuild) {
+        this.canBuild = canBuild;
+    }
 
     public AbstractShipClass getAbstractShipClass() {
         return abstractShipClass;
@@ -88,7 +108,7 @@ public final class Ship extends ShipClass implements Comparable<Ship>{
         return shipClass;
     }
 
-    public void setLocations(List<Locations> locations) {
+    public void setLocations(List<String> locations) {
         this.locations = locations;
     }
 
@@ -121,7 +141,7 @@ public final class Ship extends ShipClass implements Comparable<Ship>{
         return updateTime;
     }
 
-    public List<Locations> getLocations() {
+    public List<String> getLocations() {
         return locations;
     }
 
@@ -153,6 +173,15 @@ public final class Ship extends ShipClass implements Comparable<Ship>{
         this.pic_url = pic_url;
     }
 
+    public String getAudio() {
+        return audio;
+    }
+
+    public void setAudio(String audio) {
+
+        this.audio = audio;
+    }
+
     public Ship(Builder builder) {
         id = builder.id;
         pid = builder.pid;
@@ -175,6 +204,7 @@ public final class Ship extends ShipClass implements Comparable<Ship>{
         hasPlane = builder.hasPlane;
         planes = builder.planes;
         painter = builder.painter;
+        canUpdate = builder.canUpdate;
     }
 
     @Override
@@ -198,7 +228,7 @@ public final class Ship extends ShipClass implements Comparable<Ship>{
         private String updateCost;
         private String attackCost;
         private List<Weapon> weapons = null;
-        private List<Locations> locations = null;
+        private List<String> locations = null;
         private String name;
         private int range;
         private ShipClass shipClass;

@@ -127,9 +127,12 @@ public class ShipFragment extends BaseFragment{
         Ship deepsnow = new Ship.Builder().createShipGirl(fubukis, 3, "深雪", true).updateTime(1).build();
         Ship chuxue = new Ship.Builder().createShipGirl(fubukis, 4 , "初雪", true).updateTime(1).build();
         Ship congyun = new Ship.Builder().createShipGirl(fubukis, 5, "从云", true).updateTime(2).build();
-        Ship poi = new Ship.Builder().createShipGirl(bailu, 1, "夕立", true).updateTime(2).build();
+        Ship poi = new Ship.Builder().createShipGirl(bailu, 1, "夕立", true).updateTime(2).updateCost("update").attackCost("cost").needPaper(false).painter("你猜").updateLevel(55).build();
         poi.setPic_url("0/0e/KanMusu082Illust.png");
-        Ship shigure = new Ship.Builder().createShipGirl(bailu, 2, "时雨", true).updateTime(2).build();
+        poi.setAudio("声优");
+        Ship shigure = new Ship.Builder().createShipGirl(bailu, 2, "时雨", false).painter("画师").attackCost("attackcost").build();
+        shigure.setCanBuild(false);
+        shigure.setAudio("声优test");
         shigure.setPic_url("b/b3/KanMusu080Illust.png");
         tmp.add(bailu);
         tmp.add(poi);

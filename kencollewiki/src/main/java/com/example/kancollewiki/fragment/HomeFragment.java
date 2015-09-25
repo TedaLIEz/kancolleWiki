@@ -197,6 +197,7 @@ public class HomeFragment extends BaseFragment {
 
     }
 
+
     private void loadMoreNews() {
         StringRequest stringRequest = new StringRequest(C.NEWS_URL  + page, new Response.Listener<String>() {
             @Override

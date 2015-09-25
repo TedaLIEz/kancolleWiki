@@ -35,18 +35,31 @@ public class ShipDetailBinder extends ShipDetailFragmentBinder{
         lists = new HashMap<>();
         lists.put(ShipDataType.SHIP_DATA.getText(), ship.getBean());
         lists.put(ShipDataType.PIC.getText(), ship.getPic_url());
+        lists.put(ShipDataType.AUDIO.getText(), ship.getAudio());
         lists.put(ShipDataType.PAINTER.getText(), ship.getPainter());
-        lists.put(ShipDataType.RANGE.getText(), ship.getRange());
+        lists.put(ShipDataType.RANGE.getText(), ship.getRange() == 0 ? "短" : "长");
+        lists.put(ShipDataType.SHIP_TYPE.getText(), ship.getShipClass().getName());
         if (ship.isCanUpdate()) {
-            lists.put(ShipDataType.SHIP_UPDATE_LEVEL.getText(), ship.getUpdateCost());
+            lists.put(ShipDataType.SHIP_UPDATE_LEVEL.getText(), ship.getUpdateLevel());
             lists.put(ShipDataType.SHIP_UPDATE_COST.getText(), ship.getUpdateCost());
         }
         lists.put(ShipDataType.SHIP_ATTACK_COST.getText(), ship.getAttackCost());
     }
 
     @Override
-    public void bindViewHolder(ShipDetailFragmentViewHolder viewHolder, int i) {
-
+    public void bindViewHolder(ShipDetailFragmentViewHolder viewHolder, final int i) {
+        if (i > 5) {
+            viewHolder.itemView.setBackgroundResource(R.drawable.detail_ship_selector);
+        }
+        viewHolder.setOnItemClickListener(new ShipDetailFragmentViewHolder.HolderClickListener() {
+            @Override
+            public void onItemClick(View v, int pos) {
+                if (i > 4) {
+                    return ;
+                }
+                Utils.log("click in detail " + i + " >> " + ShipDataType.values()[i].getText() + " <<");
+            }
+        });
         if (i < getItemCount()) {
             viewHolder.tv_name.setText(ShipDataType.values()[i].getText());
             if (i < 2) {

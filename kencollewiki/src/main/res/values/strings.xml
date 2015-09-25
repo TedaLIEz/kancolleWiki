@@ -5,8 +5,15 @@
     <string name="action_settings">Settings</string>
 
 <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment">Hello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragmentHello blank fragment</string>
     <string name="title_activity_base">BaseActivity</string>
     <string name="title_activity_test">TestActivity</string>
     <string name="title_activity_ship">ShipActivity</string>
+
+    <string name="fragment_home">官推转发</string>
+    <string name="fragment_equip">装备</string>
+    <string name="fragment_level">出击</string>
+    <string name="fragment_task">任务</string>
+    <string name="fragment_crusade">远征</string>
+    <string name="fragment_ship">舰娘</string>
 </resources>
