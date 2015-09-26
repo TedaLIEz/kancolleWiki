@@ -1,17 +1,13 @@
 package com.example.kancollewiki.fragment;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.kancollewiki.C;
 import com.example.kancollewiki.R;
@@ -21,7 +17,7 @@ import com.example.kancollewiki.bean.ship.AbstractShipClass;
 import com.example.kancollewiki.bean.ship.DDShip;
 import com.example.kancollewiki.bean.ship.Ship;
 import com.example.kancollewiki.bean.ship.ShipClass;
-import com.example.kancollewiki.util.PicJsonArray;
+import com.example.kancollewiki.util.JSONHelper;
 import com.example.kancollewiki.util.Utils;
 import com.example.kancollewiki.view.MyListLinearLayout;
 import com.zzt.inbox.interfaces.OnDragStateChangeListener;
@@ -34,9 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class ShipFragment extends BaseFragment{
     InboxLayoutListView inboxLayoutListView;
@@ -104,13 +98,6 @@ public class ShipFragment extends BaseFragment{
                         intent.putExtras(bundle);
                         startActivity(intent);
                     }
-//                    if (Build.VERSION.SDK_INT >= 21) {
-//                        Intent intent = new Intent(getActivity(), ShipActivity.class);
-//                        intent.putExtra("ship",shipCLass);
-//                        ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(getActivity(), view, "change_ship_item");
-//                        Utils.startSharedElementActivity(getActivity(), intent, activityOptions);
-//                    }
-
                 }
             }
         });
@@ -157,17 +144,17 @@ public class ShipFragment extends BaseFragment{
      * @throws IOException
      * @throws JSONException
      */
-    private void readJson() {
-        JSONObject jsonObject = PicJsonArray.getJsonObject();
-        JSONArray array = jsonObject.names();
-        for (int i = 0; i < array.length(); i++) {
-            try {
-                Utils.log("pic name" + array.get(i) + "url " + jsonObject.get((String) array.get(i)));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-
-    }
+//    private void readJson() {
+//        JSONObject jsonObject = JSONHelper.getJsonObject();
+//        JSONArray array = jsonObject.names();
+//        for (int i = 0; i < array.length(); i++) {
+//            try {
+//                Utils.log("pic name" + array.get(i) + "url " + jsonObject.get((String) array.get(i)));
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//    }
 
 }

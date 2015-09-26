@@ -7,5 +7,5 @@
     <dimen name="nav_avator_width">98dp</dimen>
     <dimen name="card_margin">16dp</dimen>
     <dimen name="navigation_elevation">15dp</dimen>
-
+    <dimen name="task_item_margin">8dp</dimen>
 </resources>

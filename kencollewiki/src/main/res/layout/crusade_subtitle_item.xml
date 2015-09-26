@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:background="@color/grey_light"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:background="@color/grey_dark"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:layout_width="0dp"
+                android:layout_weight="6"
+                android:layout_height="match_parent"
+                android:id="@+id/crusade_sub_name"
+                android:text="南西诸岛海域"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal" />
+            <View
+                android:background="@color/grey_dark"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:gravity="center_horizontal"
+                android:text="时间"
+                android:layout_weight="2"
+                android:id="@+id/crusade_sub_time"
+                android:layout_gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <View
+                android:background="@color/grey_dark"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:gravity="center_horizontal"
+                android:id="@+id/crusade_sub_fuel"
+                android:layout_weight="1"
+                android:text="燃料"
+                android:layout_gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <View
+                android:background="@color/grey_dark"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:id="@+id/crusade_sub_bullet"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="弹药"/>
+            <View
+                android:background="@color/grey_dark"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="钢材"
+                android:id="@+id/crusade_sub_steel"
+                android:layout_width="0dp"
+                android:layout_height="match_parent" />
+            <View
+                android:background="@color/grey_dark"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"/>
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:gravity="center_horizontal"
+                android:layout_weight="1"
+                android:text="铝"
+                android:id="@+id/crusade_sub_al"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <View
+            android:background="@color/grey_dark"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

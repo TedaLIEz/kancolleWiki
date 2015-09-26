@@ -18,9 +18,9 @@ public class ShipDetailFragmentViewHolder extends UltimateRecyclerviewViewHolder
     protected HolderClickListener holderClickListener;
     public ShipDetailFragmentViewHolder(View itemView) {
         super(itemView);
-        tv_name = Utils.findViewById(itemView, R.id.ship_detail_name);
-        tv_data = Utils.findViewById(itemView, R.id.ship_detail_data);
-        iv_next = Utils.findViewById(itemView, R.id.ship_detail_next);
+        tv_name = (TextView) itemView.findViewById(R.id.ship_detail_name);
+        tv_data = (TextView) itemView.findViewById(R.id.ship_detail_data);
+        iv_next = (ImageView) itemView.findViewById(R.id.ship_detail_next);
 
     }
 

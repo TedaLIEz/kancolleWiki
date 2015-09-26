@@ -2,7 +2,8 @@ package com.example.kancollewiki;
 
 import android.app.Application;
 
-import com.example.kancollewiki.util.PicJsonArray;
+import com.example.kancollewiki.util.NoSQLHelper;
+import com.example.kancollewiki.util.JSONHelper;
 import com.example.kancollewiki.util.RequestManager;
 
 /**
@@ -13,11 +14,13 @@ public class MyApp extends Application {
     public void onCreate() {
         super.onCreate();
         init();
+
     }
 
     private void init() {
         RequestManager.init(this);
-        PicJsonArray.init(this);
+        NoSQLHelper.init(this);
+        JSONHelper.init(this);
     }
 
 

@@ -9,10 +9,12 @@ import android.widget.BaseAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
+
 /**
  * Created by Administrator on 2015/9/15.
  */
-public abstract class BaseListAdapter<T> extends BaseAdapter {
+public abstract class BaseListAdapter<T> extends BaseAdapter implements StickyListHeadersAdapter{
     Context ctx;
     LayoutInflater inflater;
     List<T> datas = new ArrayList<T>();

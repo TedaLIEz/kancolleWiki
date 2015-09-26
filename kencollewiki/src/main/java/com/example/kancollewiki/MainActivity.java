@@ -3,6 +3,7 @@ package com.example.kancollewiki;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -55,6 +56,7 @@ public class MainActivity extends BaseActivity {
 
         initFragments();
         initView();
+        Utils.log("update time in mainActivity" + SystemClock.uptimeMillis());
     }
 
     private void initFragments() {
@@ -94,7 +96,7 @@ public class MainActivity extends BaseActivity {
         circleImageView = (CircleImageView) navigationView.findViewById(R.id.avator);
         ImageLoader imageLoader = RequestManager.getImageLoader();
         ImageLoader.ImageListener listener = ImageLoader.getImageListener(circleImageView, R.drawable.avator2, R.drawable.avator2);
-        imageLoader.get(C.AVATAR_URL,listener);
+        imageLoader.get(C.AVATAR_URL, listener);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,6 +108,7 @@ public class MainActivity extends BaseActivity {
         getSupportFragmentManager().beginTransaction().add(R.id.container, homeFragment).commit();
         currentFragment = homeFragment;
         toolbar.setTitle(getResources().getString(R.string.fragment_home));
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {

@@ -9,6 +9,7 @@
 
     <include layout="@layout/default_toolbar"/>
     <android.support.design.widget.NavigationView
+
         app:itemIconTint="@color/drawer_item"
         app:itemTextColor="@color/drawer_item"
         app:menu="@menu/menu_main"

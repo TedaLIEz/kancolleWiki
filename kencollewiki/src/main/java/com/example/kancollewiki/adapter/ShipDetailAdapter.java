@@ -159,7 +159,7 @@ public class ShipDetailAdapter extends UltimateDifferentViewTypeAdapter{
         public ViewHolder(View itemView) {
             super(itemView);
             this.itemView = itemView;
-            tv_sticky = Utils.findViewById(itemView, R.id.stick_text);
+            tv_sticky = (TextView) itemView.findViewById(R.id.stick_text);
         }
 
         public void setInvisible() {

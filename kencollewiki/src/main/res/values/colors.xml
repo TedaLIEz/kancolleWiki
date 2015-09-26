@@ -3,4 +3,5 @@
     <color name="grey_light">#E0E0E0</color>
     <color name="grey_dark">#BDBDBD</color>
     <color name="white">#EEEEEE</color>
+    <color name="grey_bgd">#9E9E9E</color>
 </resources>
