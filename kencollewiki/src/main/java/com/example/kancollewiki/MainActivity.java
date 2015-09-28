@@ -56,7 +56,7 @@ public class MainActivity extends BaseActivity {
 
         initFragments();
         initView();
-        Utils.log("update time in mainActivity" + SystemClock.uptimeMillis());
+//        Utils.log("update time in mainActivity" + SystemClock.uptimeMillis());
     }
 
     private void initFragments() {
@@ -158,7 +158,7 @@ public class MainActivity extends BaseActivity {
     private void switchFragment(Fragment to) {
         if(currentFragment != to) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+//            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
             if (!to.isAdded()) {
                 transaction.hide(currentFragment).add(R.id.container, to, to.getClass().getSimpleName()).commit();
             } else {
