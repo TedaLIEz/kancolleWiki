@@ -1,27 +1,19 @@
 package com.example.kancollewiki.fragment;
 
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.example.kancollewiki.R;
 import com.example.kancollewiki.adapter.CrusadeListAdapter;
 import com.example.kancollewiki.bean.Crusade;
 import com.example.kancollewiki.util.JSONHelper;
-import com.example.kancollewiki.util.LoadJsonAsyncTask;
 import com.example.kancollewiki.util.Utils;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;

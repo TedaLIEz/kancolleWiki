@@ -8,6 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.kancollewiki.bean.Crusade;
+
+import java.util.List;
 
 
 /**
@@ -16,9 +19,11 @@ import android.view.ViewGroup;
  * {@link BaseFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
 
     public BaseFragment() {
         // Required empty public constructor
     }
+
+
 }

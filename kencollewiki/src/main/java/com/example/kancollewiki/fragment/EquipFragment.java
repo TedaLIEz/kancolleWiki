@@ -10,11 +10,14 @@ import android.view.ViewGroup;
 
 import com.example.kancollewiki.R;
 
+import java.util.List;
+
 public class EquipFragment extends BaseFragment {
 
     public EquipFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
