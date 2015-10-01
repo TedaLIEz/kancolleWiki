@@ -32,8 +32,8 @@ dependencies {
     compile 'com.marshalchen.ultimaterecyclerview:library:0.3.17'
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile files('src/libs/jsoup-1.8.3.jar')
-    compile 'com.colintmiller:simplenosql:0.5.1'
     compile 'se.emilsjolander:stickylistheaders:2.7.0'
     compile 'com.alibaba:fastjson:1.1.45.android'
-
+    compile 'com.snappydb:snappydb-lib:0.5.2'
+    compile 'com.esotericsoftware.kryo:kryo:2.24.0'
 }

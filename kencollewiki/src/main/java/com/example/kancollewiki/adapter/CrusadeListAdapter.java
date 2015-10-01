@@ -32,15 +32,16 @@ public class CrusadeListAdapter extends BaseListAdapter<Crusade>{
             viewHolder = new ViewHolder();
             convertView = inflater.inflate(R.layout.crusade_item, parent, false);
             convertView.setTag(viewHolder);
+            viewHolder.tv_name = (TextView) convertView.findViewById(R.id.crusade_name);
+            viewHolder.tv_time = (TextView) convertView.findViewById(R.id.crusade_time);
+            viewHolder.tv_bullet = (TextView) convertView.findViewById(R.id.crusade_bullet);
+            viewHolder.tv_fuel = (TextView) convertView.findViewById(R.id.crusade_fuel);
+            viewHolder.tv_steel = (TextView) convertView.findViewById(R.id.crusade_steel);
+            viewHolder.tv_al = (TextView) convertView.findViewById(R.id.crusade_al);
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        viewHolder.tv_name = (TextView) convertView.findViewById(R.id.crusade_name);
-        viewHolder.tv_time = (TextView) convertView.findViewById(R.id.crusade_time);
-        viewHolder.tv_bullet = (TextView) convertView.findViewById(R.id.crusade_bullet);
-        viewHolder.tv_fuel = (TextView) convertView.findViewById(R.id.crusade_fuel);
-        viewHolder.tv_steel = (TextView) convertView.findViewById(R.id.crusade_steel);
-        viewHolder.tv_al = (TextView) convertView.findViewById(R.id.crusade_al);
+
         viewHolder.tv_name.setText(crusade.getId() + "." + crusade.getName_jp());
         viewHolder.tv_time.setText(crusade.getTime().split("/")[0]);
         viewHolder.tv_fuel.setText(crusade.getFuel().split("/")[0]);

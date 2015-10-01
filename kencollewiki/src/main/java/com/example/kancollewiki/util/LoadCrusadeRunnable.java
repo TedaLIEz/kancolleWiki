@@ -15,11 +15,6 @@ public class LoadCrusadeRunnable implements Runnable {
     private static final int LOAD_FAILED = 1;
     JsonTask jsonTask;
 
-    interface LoadCrusadeRunnableMethods<T>{
-        void setData(List<T> datas);
-        void handleState(int state);
-    }
-
     public LoadCrusadeRunnable(JsonTask jsonTask) {
         this.jsonTask = jsonTask;
     }
@@ -27,7 +22,7 @@ public class LoadCrusadeRunnable implements Runnable {
     @Override
     public void run() {
         android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
-        List<Crusade> datas = JSONHelper.getDatas();
+        List<Crusade> datas = JSONHelper.getCrusadeDatas();
         if (datas != null && datas.size() != 0) {
             jsonTask.setData(datas);
             jsonTask.handleState(LOAD_SUCCESS);

@@ -17,25 +17,30 @@ public class JsonManager {
     private static final int LOAD_SUCCESS = 0;
     private static final int LOAD_FAILED = 1;
     private static JsonManager sInstance = null;
-    private BaseListAdapter baseListAdapter;
     private Handler mHandler;
+    private JsonDataLoad jsonDataLoad;
     static {
         sInstance = new JsonManager();
     }
+    public interface JsonDataLoad<T> {
+        void onDataLoadSuccess(List<T> datas);
 
+        void onDataLoadFailed();
+    }
     private JsonManager() {
         mHandler = new Handler(Looper.getMainLooper()) {
             @Override
             public void handleMessage(Message msg) {
                 JsonTask jsonTask = (JsonTask) msg.obj;
-                BaseFragment baseFragment = jsonTask.getBaseFragment();
-                List<Crusade> datas = jsonTask.getData();
+                List datas = jsonTask.getData();
                 switch (msg.what) {
                     case LOAD_SUCCESS :
 //                        baseFragment.onDataLoadSuccess(datas);
+                        jsonDataLoad.onDataLoadSuccess(datas);
                         break;
                     case LOAD_FAILED :
 //                        baseFragment.onDataLoadFailed();
+                        jsonDataLoad.onDataLoadFailed();
                         break;
                     default:
                         super.handleMessage(msg);
@@ -50,6 +55,10 @@ public class JsonManager {
         return sInstance;
     }
 
+    public void setJsonDataLoad(JsonDataLoad jsonDataLoad) {
+        this.jsonDataLoad = jsonDataLoad;
+    }
+
     public void handleState(JsonTask jsonTask, int state) {
         switch (state) {
             case LOAD_SUCCESS :
@@ -57,5 +66,11 @@ public class JsonManager {
                 completeMessage.sendToTarget();
                 break;
         }
+    }
+
+    public void startLoadCrusade(JsonDataLoad jsonDataLoad) {
+        setJsonDataLoad(jsonDataLoad);
+        JsonTask jsonTask = new JsonTask(this);
+
     }
 }

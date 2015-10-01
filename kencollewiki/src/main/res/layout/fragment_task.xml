@@ -3,6 +3,23 @@
     android:layout_height="match_parent"
     tools:context="com.example.kancollewiki.fragment.TaskFragment">
 
-
-
+    <com.zzt.inbox.widget.InboxBackgroundScrollView
+        android:overScrollMode="always"
+        android:scrollbars="none"
+        android:id="@+id/task_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.example.kancollewiki.view.MyListLinearLayout
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:id="@+id/task_container"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></com.example.kancollewiki.view.MyListLinearLayout>
+    </com.zzt.inbox.widget.InboxBackgroundScrollView>
+    <com.example.kancollewiki.view.InboxLayoutStickyHeaderListView
+        android:id="@+id/task_listview"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.example.kancollewiki.view.InboxLayoutStickyHeaderListView>
 </FrameLayout>
