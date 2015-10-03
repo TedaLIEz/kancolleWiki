@@ -16,4 +16,5 @@
     <string name="fragment_task">任务</string>
     <string name="fragment_crusade">远征</string>
     <string name="fragment_ship">舰娘</string>
+    <string name="title_activity_task">TaskActivity</string>
 </resources>

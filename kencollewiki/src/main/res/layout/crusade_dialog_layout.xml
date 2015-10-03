@@ -1,83 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/dialog"
     android:layout_gravity="center"
+    android:background="@color/white"
     android:orientation="vertical" android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <LinearLayout
-        android:layout_width="match_parent"
+
+        android:layout_gravity="center"
         android:orientation="vertical"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_height="match_parent">
-        <TextView
-            android:layout_gravity="center_horizontal"
-            android:text="title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </TextView>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
         <LinearLayout
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal"
+            android:paddingTop="1dp"
             android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:paddingBottom="5dp"
             android:layout_height="wrap_content">
             <TextView
+                android:id="@+id/crusade_title"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
                 android:layout_gravity="center_horizontal"
-                android:text="旗舰Lv："
+                android:text="title"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/crusade_flagship_lv"
-                android:text="3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
+                android:layout_height="wrap_content">
+            </TextView>
+            <LinearLayout
+
                 android:layout_gravity="center_horizontal"
-                android:text="合计Lv："
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/crusade_total_lv"
-                android:text="200"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <TextView
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:text="旗舰Lv："
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/crusade_flagship_lv"
+                    android:text="3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/crusade_total"
                 android:layout_gravity="center_horizontal"
-                android:text="编成要求："
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/crusade_necc_ship"
-                android:text="3"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:text="合计Lv："
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/crusade_total_lv"
+                    android:text="200"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:text="编成要求："
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/crusade_necc_ship"
+                    android:text="测试测试测试测试测试测试测试测试"
+                    android:singleLine="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/crusade_bucket"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:text="装备要求："
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/crusade_tv_bucket"
+                    android:text="测试测试测试测试测试测试测试测试"
+                    android:singleLine="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/crusade_bonus"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_gravity="center_horizontal"
+                    android:text="有几率获得："
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/crusade_tv_bonus"
+                    android:text="测试测试测试测试测试测试测试测试"
+                    android:singleLine="false"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
         </LinearLayout>
+        <View
+            android:background="@color/grey_dark"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"/>
         <LinearLayout
-            android:gravity="bottom"
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
-
-                android:id="@+id/crusade_confirm"
+                android:layout_gravity="center_horizontal"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
                 android:text="确定"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:id="@+id/positive_button" />
         </LinearLayout>
     </LinearLayout>
+
 
 </LinearLayout>

@@ -22,34 +22,18 @@
                 <TextView
                     android:textSize="19sp"
                     android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title"
-                    android:id="@+id/task_id"
+                    android:id="@+id/task_pid"
                     android:text="id"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
                 <TextView
-                    android:transitionName="task_transition"
                     android:layout_marginLeft="10dp"
                     android:textSize="19sp"
                     android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title"
-                    android:id="@+id/task_name"
+                    android:id="@+id/task_pname"
                     android:text="任务名称"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/task_has_pid"
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:text="开放条件："
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:id="@+id/task_pid"
-                    android:text="A3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
         <ImageView

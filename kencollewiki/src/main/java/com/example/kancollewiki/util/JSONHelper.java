@@ -23,7 +23,6 @@ import java.util.List;
  */
 public class JSONHelper {
     private static JSONObject picJsonObject;
-    private static JSONArray crusadeJsonArray;
     private static List<Crusade> crusade_datas;
     private static JSONObject taskJsonObject;
     private static List<Task> task_datas;
@@ -47,18 +46,20 @@ public class JSONHelper {
             byte[] buffer = new byte[inputStream.available()];
             inputStream.read(buffer);
             String json = new String(buffer);
-            crusadeJsonArray = JSON.parseArray(json);
+            JSONArray crusadeJsonArray = JSON.parseArray(json);
             Utils.log("Crusadejson loaded success");
+            PutCrusadeDataToDB(crusadeJsonArray);
+            Utils.log("Crusade data init success");
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
+        } catch (SnappydbException e) {
+            e.printStackTrace();
         }
-        crusade_datas = new ArrayList<>();
-        for (int i = 0; i < crusadeJsonArray.size(); i++) {
-            Crusade crusade = JSON.toJavaObject(crusadeJsonArray.getJSONObject(i),Crusade.class);
-            crusade_datas.add(crusade);
-        }
+//        crusade_datas = new ArrayList<>();
+
+
         Utils.log("crusade data init success");
         inputStream = ctx.getResources().openRawResource(R.raw.task);
         try {
@@ -73,6 +74,17 @@ public class JSONHelper {
             e.printStackTrace();
         } catch (SnappydbException e) {
             e.printStackTrace();
+        }
+
+
+    }
+
+    private static void PutCrusadeDataToDB(JSONArray crusadeJsonArray) throws SnappydbException {
+        DB db = SnappyDBHelper.getDb();
+        for (int i = 0; i < crusadeJsonArray.size(); i++) {
+            Crusade crusade = JSON.toJavaObject(crusadeJsonArray.getJSONObject(i),Crusade.class);
+            db.put("crusade_" + crusade.getId(), crusade);
+//            crusade_datas.add(crusade);
         }
 
 

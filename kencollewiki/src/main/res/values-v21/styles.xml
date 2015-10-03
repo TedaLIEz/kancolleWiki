@@ -5,7 +5,11 @@
     <style name="MyTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:colorPrimary">@color/colorPrimary</item>
         <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
-
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowSharedElementEnterTransition">@transition/change_ship_item</item>
+        <item name="android:windowSharedElementExitTransition">@transition/change_ship_item</item>
+        <item name="android:windowEnterTransition">@transition/change_ship_item</item>
+        <item name="android:windowExitTransition">@transition/change_ship_item</item>
     </style>
     <style name="MainActivityStyle" parent="MyTheme">
         <item name="android:actionMenuTextAppearance">@style/MainActivityStyle.MenuStyle</item>
@@ -21,7 +25,6 @@
     <style name="NavigationBarStyle" parent="MyTheme">
 
     </style>
-
     <style name="MainActivityStyle.MenuStyle">
         <item name="android:textSize">@dimen/abc_text_size_medium_material</item>
     </style>

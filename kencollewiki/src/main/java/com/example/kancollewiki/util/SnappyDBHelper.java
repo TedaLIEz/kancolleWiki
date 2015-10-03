@@ -60,7 +60,7 @@ public class SnappyDBHelper {
 
     public static Object findItemById(String key, Class clazz) {
         try {
-            return db.getObject(key, clazz);
+            return db.get(key, clazz);
         } catch (SnappydbException e) {
             throw new IllegalArgumentException(e.getMessage());
         }

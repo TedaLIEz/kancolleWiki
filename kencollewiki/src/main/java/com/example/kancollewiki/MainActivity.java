@@ -37,7 +37,7 @@ import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements TaskFragment.OnTaskListSelectedListener{
     @Bind(R.id.drawer_layout)
     DrawerLayout drawerLayout;
     @Bind(R.id.navigation)
@@ -119,6 +119,7 @@ public class MainActivity extends BaseActivity {
                         break;
                     case R.id.level:
                         switchFragment(levelFragment);
+                        toolbar.setTitle("出击");
                         break;
                     case R.id.ship:
                         switchFragment(shipFragment);
@@ -166,5 +167,10 @@ public class MainActivity extends BaseActivity {
             }
             currentFragment = to;
         }
+    }
+
+    @Override
+    public void onTaskSelected(String title) {
+        toolbar.setTitle(title);
     }
 }

@@ -9,9 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.kancollewiki.R;
+import com.marshalchen.ultimaterecyclerview.UltimateRecyclerView;
 
 public class LevelFragment extends BaseFragment {
-
+    UltimateRecyclerView ultimateRecyclerView;
     public LevelFragment() {
         // Required empty public constructor
     }
@@ -21,9 +22,13 @@ public class LevelFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        return inflater.inflate(R.layout.fragment_level, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_level, container, false);
+        ultimateRecyclerView = (UltimateRecyclerView) rootView.findViewById(R.id.level_list);
+        return rootView;
     }
+
+
+
 
 
 }
